@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1037602325706",
+    "firebase_url": "https://easybooking-a83d2-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "easybooking-a83d2",
+    "storage_bucket": "easybooking-a83d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037602325706:android:0277617757404a64a4a033",
+        "android_client_info": {
+          "package_name": "com.example.licenta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037602325706-r1g4spkhqt3tfrmlmqg3q54gqjiqkn8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4YmfnV-PlNaBYjE0nac4blQf2YxvUbSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037602325706-r1g4spkhqt3tfrmlmqg3q54gqjiqkn8v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1037602325706-eva9a2lan3pk70rs2ee36bhtcdlq6bnt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.licenta"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

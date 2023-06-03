@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:licenta/style/colors.dart';
+import 'package:licenta/resource/style/style.dart';
 
 TextTheme textTheme = const TextTheme(
   displayLarge: TextStyle(
