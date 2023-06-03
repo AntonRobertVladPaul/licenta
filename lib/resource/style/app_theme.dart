@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:licenta/style/style.dart';
+import 'package:licenta/resource/style/style.dart';
 
 final appTheme = ThemeData(
   inputDecorationTheme: const InputDecorationTheme(
