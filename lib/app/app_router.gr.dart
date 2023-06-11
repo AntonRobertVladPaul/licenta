@@ -22,10 +22,10 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    MainRoute.name: (routeData) {
+    MainRouterRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
-        child: const MainPage(),
+        child: WrappedRoute(child: const MainRouterPage()),
       );
     },
     LandingRoute.name: (routeData) {
@@ -45,6 +45,33 @@ class _$AppRouter extends RootStackRouter {
         customRouteBuilder: cupertinoModalBuilder,
         opaque: true,
         barrierDismissible: false,
+      );
+    },
+    MainRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const MainPage(),
+      );
+    },
+    AddLocationRoute.name: (routeData) {
+      return CustomPage<void>(
+        routeData: routeData,
+        child: const AddLocationPage(),
+        customRouteBuilder: cupertinoModalBuilder,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    LocationsRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const LocationsPage(),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const ProfilePage(),
       );
     },
     AuthRoute.name: (routeData) {
@@ -70,9 +97,33 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
-          MainRoute.name,
+          MainRouterRoute.name,
           path: '/',
-          guards: [authGuard],
+          children: [
+            RouteConfig(
+              MainRoute.name,
+              path: '',
+              parent: MainRouterRoute.name,
+              guards: [authGuard],
+              children: [
+                RouteConfig(
+                  LocationsRoute.name,
+                  path: 'locations-page',
+                  parent: MainRoute.name,
+                ),
+                RouteConfig(
+                  ProfileRoute.name,
+                  path: 'profile-page',
+                  parent: MainRoute.name,
+                ),
+              ],
+            ),
+            RouteConfig(
+              AddLocationRoute.name,
+              path: 'add-location-page',
+              parent: MainRouterRoute.name,
+            ),
+          ],
         ),
         RouteConfig(
           LandingRoute.name,
@@ -103,15 +154,16 @@ class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [MainPage]
-class MainRoute extends PageRouteInfo<void> {
-  const MainRoute()
+/// [MainRouterPage]
+class MainRouterRoute extends PageRouteInfo<void> {
+  const MainRouterRoute({List<PageRouteInfo>? children})
       : super(
-          MainRoute.name,
+          MainRouterRoute.name,
           path: '/',
+          initialChildren: children,
         );
 
-  static const String name = 'MainRoute';
+  static const String name = 'MainRouterRoute';
 }
 
 /// generated route for
@@ -160,6 +212,55 @@ class LoginOrSignUpRouteArgs {
   String toString() {
     return 'LoginOrSignUpRouteArgs{key: $key, type: $type}';
   }
+}
+
+/// generated route for
+/// [MainPage]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
+      : super(
+          MainRoute.name,
+          path: '',
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRoute';
+}
+
+/// generated route for
+/// [AddLocationPage]
+class AddLocationRoute extends PageRouteInfo<void> {
+  const AddLocationRoute()
+      : super(
+          AddLocationRoute.name,
+          path: 'add-location-page',
+        );
+
+  static const String name = 'AddLocationRoute';
+}
+
+/// generated route for
+/// [LocationsPage]
+class LocationsRoute extends PageRouteInfo<void> {
+  const LocationsRoute()
+      : super(
+          LocationsRoute.name,
+          path: 'locations-page',
+        );
+
+  static const String name = 'LocationsRoute';
+}
+
+/// generated route for
+/// [ProfilePage]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute()
+      : super(
+          ProfileRoute.name,
+          path: 'profile-page',
+        );
+
+  static const String name = 'ProfileRoute';
 }
 
 /// generated route for

@@ -1,1 +1,4 @@
-enum AccountType { client, owner }
+enum AccountType {
+  client,
+  owner,
+}

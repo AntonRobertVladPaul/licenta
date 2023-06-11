@@ -4,7 +4,9 @@ import 'package:licenta/app/app.dart';
 import 'package:licenta/core/core.dart';
 import 'package:licenta/feature/auth/auth.dart';
 import 'package:licenta/feature/landing/landing.dart';
+import 'package:licenta/feature/locations/locations.dart';
 import 'package:licenta/feature/main/main.dart';
+import 'package:licenta/feature/profile/profile.dart';
 
 part 'app_router.gr.dart';
 
@@ -13,9 +15,20 @@ part 'app_router.gr.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute<void>>[
     AutoRoute<void>(
-      page: MainPage,
+      page: MainRouterPage,
       initial: true,
-      guards: [AuthGuard],
+      children: <AutoRoute<void>>[
+        AutoRoute<void>(
+          page: MainPage,
+          initial: true,
+          guards: [AuthGuard],
+          children: [
+            locationFirstLevelRoute,
+            ...profileRoutes,
+          ],
+        ),
+        ...locationsRoutes,
+      ],
     ),
     landingRoutes,
     ...authRoutes,

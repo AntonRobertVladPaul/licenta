@@ -9,6 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:licenta/app/app.dart';
 import 'package:licenta/core/core.dart';
 import 'package:licenta/feature/auth/auth.dart';
+import 'package:licenta/feature/locations/data_source/data_source.dart';
+import 'package:licenta/feature/locations/repository/locations_repository.dart';
+import 'package:licenta/feature/main/main.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -37,6 +40,7 @@ Future<void> bootstrap({
         appId: '1:1037602325706:ios:c53140b1580d52b3a4a033',
         messagingSenderId: '1037602325706',
         projectId: 'easybooking-a83d2',
+        storageBucket: 'easybooking-a83d2.appspot.com',
       );
       await Firebase.initializeApp(options: firebaseOptions);
 
@@ -85,6 +89,16 @@ Future<List<RepositoryProvider<dynamic>>> _getRepositoryProviders({
     RepositoryProvider<AuthRepository>(
       create: (context) => AuthRepository(
         remoteDataSource: AuthRemoteDataSource(database),
+      ),
+    ),
+    RepositoryProvider<MainRepository>(
+      create: (context) => MainRepository(
+        remoteDataSource: MainRemoteDataSource(database),
+      ),
+    ),
+    RepositoryProvider<LocationsRepository>(
+      create: (context) => LocationsRepository(
+        remoteDataSource: LocationsRemoteDataSource(database),
       ),
     )
   ];

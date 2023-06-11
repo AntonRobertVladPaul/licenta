@@ -1,5 +1,7 @@
 export 'common_bottom_sheet.dart';
 export 'dismiss_keyboard.dart';
+export 'expandable_dotted_scroll.dart';
+export 'fading_image.dart';
 export 'large_title_page.dart';
 export 'loadable_widget.dart';
 export 'loader.dart';

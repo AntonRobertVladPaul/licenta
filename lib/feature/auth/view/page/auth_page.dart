@@ -128,6 +128,8 @@ class _AuthBodyState extends State<_AuthBody> {
     const secureStorage = FlutterSecureStorage();
     await secureStorage
         .write(key: StorageConstants.authKey, value: state.email)
-        .whenComplete(() => context.router.replaceAll([const MainRoute()]));
+        .whenComplete(
+          () => context.router.replaceAll([const MainRouterRoute()]),
+        );
   }
 }
