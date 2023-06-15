@@ -29,10 +29,14 @@ class Loader extends StatelessWidget {
   Widget _buildLoader() {
     return Padding(
       padding: padding,
-      child: CircularProgressIndicator(
-        color: isWhite
-            ? EasyBookingColors.white.value
-            : EasyBookingColors.primaryText.value,
+      child: SizedBox(
+        height: dimension,
+        width: dimension,
+        child: CircularProgressIndicator(
+          color: isWhite
+              ? EasyBookingColors.white.value
+              : EasyBookingColors.primaryText.value,
+        ),
       ),
     );
   }

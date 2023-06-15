@@ -8,4 +8,7 @@ const locationsRoutes = [
     customRouteBuilder: cupertinoModalBuilder,
     page: AddLocationPage,
   ),
+  AutoRoute<void>(
+    page: LocationDetailsPage,
+  )
 ];

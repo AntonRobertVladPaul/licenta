@@ -5,28 +5,37 @@ import 'package:licenta/feature/locations/view/widget/location_info_form.dart';
 import 'package:licenta/resource/asset/assets.dart';
 
 class AddLocationPage extends StatelessWidget {
-  const AddLocationPage({super.key});
+  const AddLocationPage({
+    super.key,
+    this.location,
+  });
+
+  final Location? location;
 
   @override
   Widget build(BuildContext context) {
     return LargeTitlePage(
-      title: 'Add your location',
+      title: location != null ? 'Edit your location' : 'Add your location',
       leading: GestureDetector(
         onTap: () {
           context.popRoute();
         },
         child: Asset.closeButton.widget(),
       ),
-      body: const SafeArea(
-        minimum: EdgeInsets.only(bottom: 16),
-        child: _AddLocationBody(),
+      body: SafeArea(
+        minimum: const EdgeInsets.only(bottom: 16),
+        child: _AddLocationBody(location: location),
       ),
     );
   }
 }
 
 class _AddLocationBody extends StatelessWidget {
-  const _AddLocationBody();
+  const _AddLocationBody({
+    this.location,
+  });
+
+  final Location? location;
 
   @override
   Widget build(BuildContext context) {
@@ -35,20 +44,27 @@ class _AddLocationBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 32),
-            child: Text(
-              'Complete the information below to add your location',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ),
+          _buildSubtitle(context),
           _buildLocationForm(),
         ],
       ),
     );
   }
 
+  Widget _buildSubtitle(BuildContext context) {
+    final text = location != null
+        ? 'Edit your location info changing the text info or adding more images'
+        : 'Complete the information below to add your location';
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 32),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+    );
+  }
+
   Widget _buildLocationForm() {
-    return const LocationInfoForm();
+    return LocationInfoForm(location: location);
   }
 }

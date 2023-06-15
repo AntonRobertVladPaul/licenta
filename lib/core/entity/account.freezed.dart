@@ -240,11 +240,13 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Location {
+  String? get id => throw _privateConstructorUsedError;
   String get ownerEmail => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get capacity => throw _privateConstructorUsedError;
   String get addressLine1 => throw _privateConstructorUsedError;
   String? get addressLine2 => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
   Reservation? get reservation => throw _privateConstructorUsedError;
@@ -261,11 +263,13 @@ abstract class $LocationCopyWith<$Res> {
       _$LocationCopyWithImpl<$Res, Location>;
   @useResult
   $Res call(
-      {String ownerEmail,
+      {String? id,
+      String ownerEmail,
       String name,
       int capacity,
       String addressLine1,
       String? addressLine2,
+      String? description,
       int price,
       List<String>? images,
       Reservation? reservation});
@@ -286,16 +290,22 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? ownerEmail = null,
     Object? name = null,
     Object? capacity = null,
     Object? addressLine1 = null,
     Object? addressLine2 = freezed,
+    Object? description = freezed,
     Object? price = null,
     Object? images = freezed,
     Object? reservation = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       ownerEmail: null == ownerEmail
           ? _value.ownerEmail
           : ownerEmail // ignore: cast_nullable_to_non_nullable
@@ -315,6 +325,10 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location>
       addressLine2: freezed == addressLine2
           ? _value.addressLine2
           : addressLine2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       price: null == price
           ? _value.price
@@ -352,11 +366,13 @@ abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String ownerEmail,
+      {String? id,
+      String ownerEmail,
       String name,
       int capacity,
       String addressLine1,
       String? addressLine2,
+      String? description,
       int price,
       List<String>? images,
       Reservation? reservation});
@@ -376,16 +392,22 @@ class __$$_LocationCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? ownerEmail = null,
     Object? name = null,
     Object? capacity = null,
     Object? addressLine1 = null,
     Object? addressLine2 = freezed,
+    Object? description = freezed,
     Object? price = null,
     Object? images = freezed,
     Object? reservation = freezed,
   }) {
     return _then(_$_Location(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       ownerEmail: null == ownerEmail
           ? _value.ownerEmail
           : ownerEmail // ignore: cast_nullable_to_non_nullable
@@ -405,6 +427,10 @@ class __$$_LocationCopyWithImpl<$Res>
       addressLine2: freezed == addressLine2
           ? _value.addressLine2
           : addressLine2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       price: null == price
           ? _value.price
@@ -427,11 +453,13 @@ class __$$_LocationCopyWithImpl<$Res>
 @JsonKey(includeIfNull: false)
 class _$_Location implements _Location {
   const _$_Location(
-      {required this.ownerEmail,
+      {this.id,
+      required this.ownerEmail,
       required this.name,
       required this.capacity,
       required this.addressLine1,
       this.addressLine2,
+      this.description,
       required this.price,
       final List<String>? images,
       this.reservation})
@@ -440,6 +468,8 @@ class _$_Location implements _Location {
   factory _$_Location.fromJson(Map<String, dynamic> json) =>
       _$$_LocationFromJson(json);
 
+  @override
+  final String? id;
   @override
   final String ownerEmail;
   @override
@@ -450,6 +480,8 @@ class _$_Location implements _Location {
   final String addressLine1;
   @override
   final String? addressLine2;
+  @override
+  final String? description;
   @override
   final int price;
   final List<String>? _images;
@@ -467,7 +499,7 @@ class _$_Location implements _Location {
 
   @override
   String toString() {
-    return 'Location(ownerEmail: $ownerEmail, name: $name, capacity: $capacity, addressLine1: $addressLine1, addressLine2: $addressLine2, price: $price, images: $images, reservation: $reservation)';
+    return 'Location(id: $id, ownerEmail: $ownerEmail, name: $name, capacity: $capacity, addressLine1: $addressLine1, addressLine2: $addressLine2, description: $description, price: $price, images: $images, reservation: $reservation)';
   }
 
   @override
@@ -475,6 +507,7 @@ class _$_Location implements _Location {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Location &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.ownerEmail, ownerEmail) ||
                 other.ownerEmail == ownerEmail) &&
             (identical(other.name, name) || other.name == name) &&
@@ -484,6 +517,8 @@ class _$_Location implements _Location {
                 other.addressLine1 == addressLine1) &&
             (identical(other.addressLine2, addressLine2) ||
                 other.addressLine2 == addressLine2) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.reservation, reservation) ||
@@ -494,11 +529,13 @@ class _$_Location implements _Location {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       ownerEmail,
       name,
       capacity,
       addressLine1,
       addressLine2,
+      description,
       price,
       const DeepCollectionEquality().hash(_images),
       reservation);
@@ -519,17 +556,21 @@ class _$_Location implements _Location {
 
 abstract class _Location implements Location {
   const factory _Location(
-      {required final String ownerEmail,
+      {final String? id,
+      required final String ownerEmail,
       required final String name,
       required final int capacity,
       required final String addressLine1,
       final String? addressLine2,
+      final String? description,
       required final int price,
       final List<String>? images,
       final Reservation? reservation}) = _$_Location;
 
   factory _Location.fromJson(Map<String, dynamic> json) = _$_Location.fromJson;
 
+  @override
+  String? get id;
   @override
   String get ownerEmail;
   @override
@@ -540,6 +581,8 @@ abstract class _Location implements Location {
   String get addressLine1;
   @override
   String? get addressLine2;
+  @override
+  String? get description;
   @override
   int get price;
   @override

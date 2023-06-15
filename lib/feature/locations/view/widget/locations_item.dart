@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:licenta/app/app.dart';
 import 'package:licenta/core/core.dart';
 import 'package:licenta/resource/resource.dart';
 
@@ -12,14 +14,20 @@ class LocationsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildImage(),
-        _buildTitle(context),
-        _buildCapacity(context),
-        _buildPrice(context),
-      ],
+    return GestureDetector(
+      onTap: () => context.pushRoute(
+        LocationDetailsRoute(location: location),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildImage(),
+          _buildTitle(context),
+          _buildCapacity(context),
+          _buildAddress(context),
+          _buildPrice(context),
+        ],
+      ),
     );
   }
 
@@ -56,6 +64,28 @@ class LocationsItem extends StatelessWidget {
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: EasyBookingColors.secondaryText.value,
             ),
+      ),
+    );
+  }
+
+  Widget _buildAddress(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 2),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 2),
+            child: Asset.unPaddedPinIcon.widget(
+              color: EasyBookingColors.secondaryText.value,
+            ),
+          ),
+          Text(
+            '${location.addressLine1} ${location.addressLine2 ?? ''}',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: EasyBookingColors.secondaryText.value,
+                ),
+          ),
+        ],
       ),
     );
   }

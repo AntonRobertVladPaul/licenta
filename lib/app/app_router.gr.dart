@@ -54,12 +54,27 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     AddLocationRoute.name: (routeData) {
+      final args = routeData.argsAs<AddLocationRouteArgs>(
+          orElse: () => const AddLocationRouteArgs());
       return CustomPage<void>(
         routeData: routeData,
-        child: const AddLocationPage(),
+        child: AddLocationPage(
+          key: args.key,
+          location: args.location,
+        ),
         customRouteBuilder: cupertinoModalBuilder,
         opaque: true,
         barrierDismissible: false,
+      );
+    },
+    LocationDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<LocationDetailsRouteArgs>();
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: LocationDetailsPage(
+          key: args.key,
+          location: args.location,
+        ),
       );
     },
     LocationsRoute.name: (routeData) {
@@ -121,6 +136,11 @@ class _$AppRouter extends RootStackRouter {
             RouteConfig(
               AddLocationRoute.name,
               path: 'add-location-page',
+              parent: MainRouterRoute.name,
+            ),
+            RouteConfig(
+              LocationDetailsRoute.name,
+              path: 'location-details-page',
               parent: MainRouterRoute.name,
             ),
           ],
@@ -229,14 +249,70 @@ class MainRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AddLocationPage]
-class AddLocationRoute extends PageRouteInfo<void> {
-  const AddLocationRoute()
-      : super(
+class AddLocationRoute extends PageRouteInfo<AddLocationRouteArgs> {
+  AddLocationRoute({
+    Key? key,
+    Location? location,
+  }) : super(
           AddLocationRoute.name,
           path: 'add-location-page',
+          args: AddLocationRouteArgs(
+            key: key,
+            location: location,
+          ),
         );
 
   static const String name = 'AddLocationRoute';
+}
+
+class AddLocationRouteArgs {
+  const AddLocationRouteArgs({
+    this.key,
+    this.location,
+  });
+
+  final Key? key;
+
+  final Location? location;
+
+  @override
+  String toString() {
+    return 'AddLocationRouteArgs{key: $key, location: $location}';
+  }
+}
+
+/// generated route for
+/// [LocationDetailsPage]
+class LocationDetailsRoute extends PageRouteInfo<LocationDetailsRouteArgs> {
+  LocationDetailsRoute({
+    Key? key,
+    required Location location,
+  }) : super(
+          LocationDetailsRoute.name,
+          path: 'location-details-page',
+          args: LocationDetailsRouteArgs(
+            key: key,
+            location: location,
+          ),
+        );
+
+  static const String name = 'LocationDetailsRoute';
+}
+
+class LocationDetailsRouteArgs {
+  const LocationDetailsRouteArgs({
+    this.key,
+    required this.location,
+  });
+
+  final Key? key;
+
+  final Location location;
+
+  @override
+  String toString() {
+    return 'LocationDetailsRouteArgs{key: $key, location: $location}';
+  }
 }
 
 /// generated route for

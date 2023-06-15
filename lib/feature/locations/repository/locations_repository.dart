@@ -18,16 +18,16 @@ class LocationsRepository {
     );
   }
 
-  Future<Either<Failure, void>> uploadImagesToLocation({
+  Future<Either<Failure, Location>> uploadImagesToLocation({
     required List<File> images,
-    required String locationId,
     required Location location,
+    bool isUpdate = false,
   }) async {
     return DataSourceHandler.execute(
       () => _remoteDataSource.uploadImagesToDatabase(
         images,
-        locationId,
         location,
+        isUpdate: isUpdate,
       ),
     );
   }
@@ -37,6 +37,33 @@ class LocationsRepository {
   }) async {
     return DataSourceHandler.execute(
       () => _remoteDataSource.fetchLocations(email: email),
+    );
+  }
+
+  Future<Either<Failure, void>> updateLocation(Location location) async {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.updateLocation(location),
+    );
+  }
+
+  Future<Either<Failure, void>> deleteLocation(String locationId) async {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.deleteLocation(locationId),
+    );
+  }
+
+  Future<Either<Failure, void>> deleteImage({
+    required String locationId,
+    required String imageUrl,
+  }) async {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.removeImageFromDatabase(locationId, imageUrl),
+    );
+  }
+
+  Future<Either<Failure, Location>> fetchOneLocation(String locationId) async {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.fetchOneLocation(locationId),
     );
   }
 }

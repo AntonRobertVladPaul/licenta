@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:licenta/app/app.dart';
 import 'package:licenta/core/core.dart';
+import 'package:licenta/core/widget/refreshable_widget.dart';
 import 'package:licenta/feature/locations/bloc/bloc.dart';
 import 'package:licenta/feature/locations/locations.dart';
 import 'package:licenta/feature/main/bloc/bloc.dart';
@@ -30,9 +30,15 @@ class _LocationsBody extends StatefulWidget {
 }
 
 class _LocationsBodyState extends State<_LocationsBody> {
+  late ScrollController _scrollController;
+
+  bool isButtonExtended = true;
+
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_onListScrolled);
     final account = context.read<MainBloc>().state.account;
     if (account != null) {
       context.read<LocationsBloc>().add(
@@ -45,6 +51,18 @@ class _LocationsBodyState extends State<_LocationsBody> {
     }
   }
 
+  void _onListScrolled() {
+    if (_scrollController.offset > 50) {
+      setState(() {
+        isButtonExtended = false;
+      });
+    } else {
+      setState(() {
+        isButtonExtended = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MainBloc, MainState>(
@@ -52,7 +70,8 @@ class _LocationsBodyState extends State<_LocationsBody> {
         final account = state.account;
         return BlocConsumer<LocationsBloc, LocationsState>(
           listener: (context, locationsState) {
-            if (locationsState.status == LocationsStatus.locationCreated) {
+            if (locationsState.status == LocationsStatus.locationCreated ||
+                locationsState.status == LocationsStatus.locationDeleted) {
               context.popRoute().whenComplete(
                     () => context.read<LocationsBloc>().add(
                           LocationsEvent.locationsFetched(
@@ -65,20 +84,19 @@ class _LocationsBodyState extends State<_LocationsBody> {
             }
           },
           builder: (context, locationsState) {
-            return Row(
+            return Stack(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildLogo(),
-                    _buildTitle(state.account!.accountType, context),
-                    _buildBody(
-                      state.account!.accountType,
-                      context,
-                      locationsState,
-                    ),
-                  ],
+                Positioned.fill(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildLogo(),
+                      _buildTitle(state.account!.accountType, context),
+                      _buildLocationsGridWidget(state.account!.accountType),
+                    ],
+                  ),
                 ),
+                _buildAddLocationExtendableButton(),
               ],
             );
           },
@@ -110,48 +128,32 @@ class _LocationsBodyState extends State<_LocationsBody> {
     );
   }
 
-  Widget _buildBody(
+  Widget _buildLocationsGridWidget(
     AccountType accountType,
-    BuildContext context,
-    LocationsState state,
   ) {
     return Expanded(
-      child: LoadableWidget(
-        isLoading: state.status == LocationsStatus.loading,
-        child: ExpandableDottedScroll(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildLocationsGridWidget(accountType, state),
-              _buildSpacer(),
-              if (state.locations.isEmpty && accountType == AccountType.owner)
-                _buildAddLocationButton(context)
-            ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: RefreshableWidget(
+          onRefresh: () async {
+            context.read<LocationsBloc>().add(
+                  LocationsEvent.locationsFetched(
+                    email: accountType == AccountType.owner
+                        ? context.read<MainBloc>().state.account!.email
+                        : null,
+                  ),
+                );
+          },
+          child: LocationsGridWidget(
+            controller: _scrollController,
+            accountType: accountType,
           ),
         ),
       ),
     );
   }
 
-  Widget _buildSpacer() => const Spacer();
-
-  Widget _buildLocationsGridWidget(
-    AccountType accountType,
-    LocationsState state,
-  ) {
-    return LocationsGridWidget(
-      accountType: accountType,
-      locations: state.locations,
-    );
-  }
-
-  Widget _buildAddLocationButton(BuildContext context) {
-    return EasyBookingButton(
-      text: 'Add a location',
-      onPressed: () {
-        context.pushRoute(const AddLocationRoute());
-      },
-      type: ButtonType.outlined,
-    );
-  }
+  Widget _buildAddLocationExtendableButton() => AddLocationButton(
+        isExtended: isButtonExtended,
+      );
 }

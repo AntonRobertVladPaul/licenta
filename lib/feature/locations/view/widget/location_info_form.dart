@@ -26,11 +26,13 @@ class _LocationInfoFormState extends State<LocationInfoForm> {
   final _locationAddressLine1Controller = TextEditingController();
   final _locationAddressLine2Controller = TextEditingController();
   final _priceController = TextEditingController();
+  final _descriptionController = TextEditingController();
 
   final _locationCapacityFocusNode = FocusNode();
   final _locationAddressLine1FocusNode = FocusNode();
   final _locationAddressLine2FocusNode = FocusNode();
   final _priceFocusNode = FocusNode();
+  final _descriptionFocusNode = FocusNode();
 
   String? priceErrorMessage;
 
@@ -39,12 +41,25 @@ class _LocationInfoFormState extends State<LocationInfoForm> {
 
   @override
   void initState() {
-    _locationNameController.addListener(refreshCallback);
-    _locationCapacityController.addListener(refreshCallback);
-    _locationAddressLine1Controller.addListener(refreshCallback);
-    _locationAddressLine2Controller.addListener(refreshCallback);
-    _priceController.addListener(refreshCallback);
     super.initState();
+    _locationNameController
+      ..text = widget.location?.name ?? ''
+      ..addListener(refreshCallback);
+    _locationCapacityController
+      ..text = widget.location?.capacity.toString() ?? ''
+      ..addListener(refreshCallback);
+    _locationAddressLine1Controller
+      ..text = widget.location?.addressLine1 ?? ''
+      ..addListener(refreshCallback);
+    _locationAddressLine2Controller
+      ..text = widget.location?.addressLine2 ?? ''
+      ..addListener(refreshCallback);
+    _descriptionController
+      ..text = widget.location?.description ?? ''
+      ..addListener(refreshCallback);
+    _priceController
+      ..text = widget.location?.price.toString() ?? ''
+      ..addListener(refreshCallback);
   }
 
   void refreshCallback() {
@@ -61,6 +76,7 @@ class _LocationInfoFormState extends State<LocationInfoForm> {
           _buildBuildCapacityAndPrice(),
           _buildAddressFirstLine(),
           _buildAddressSecondLine(),
+          _buildDescription(),
           if (_locationPhotos.isNotEmpty)
             _buildPhotos()
           else
@@ -155,7 +171,21 @@ class _LocationInfoFormState extends State<LocationInfoForm> {
         label: 'Location address line 2 (optional)',
         controller: _locationAddressLine2Controller,
         focusNode: _locationAddressLine2FocusNode,
+        onEditingComplete: _descriptionFocusNode.requestFocus,
+        textInputAction: TextInputAction.next,
+      ),
+    );
+  }
+
+  Widget _buildDescription() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16),
+      child: OutlinedTextField(
+        hint: 'Description (optional)',
+        controller: _descriptionController,
+        focusNode: _descriptionFocusNode,
         textInputAction: TextInputAction.done,
+        maxLines: 3,
       ),
     );
   }
@@ -251,40 +281,85 @@ class _LocationInfoFormState extends State<LocationInfoForm> {
   Widget _buildSpacer() => const Spacer();
 
   Widget _buildSaveButton() {
-    final isEnabled = _locationNameController.text.isNotEmpty &&
-        _locationCapacityController.text.isNotEmpty &&
-        _locationAddressLine1Controller.text.isNotEmpty &&
-        _priceController.text.isNotEmpty &&
-        _locationPhotos.isNotEmpty;
-
     return BlocBuilder<LocationsBloc, LocationsState>(
       builder: (context, state) {
-        return EasyBookingButton(
-          text: 'Save location & close',
-          isEnabled: isEnabled,
-          isLoading: state.status == LocationsStatus.loading,
-          onPressed: () {
-            final account = context.read<MainBloc>().state.account!;
-
-            context.read<LocationsBloc>().add(
-                  LocationsEvent.locationCreated(
-                    name: _locationNameController.text,
-                    price: int.parse(_priceController.text),
-                    capacity: int.parse(_locationCapacityController.text),
-                    addressLine1: _locationAddressLine1Controller.text,
-                    addressLine2:
-                        _locationAddressLine2Controller.text.isNotEmpty
-                            ? _locationAddressLine2Controller.text
-                            : null,
-                    images: _locationPhotos,
-                    owner: account,
-                  ),
-                );
-          },
-          type: ButtonType.elevated,
-          buttonStyleType: ButtonStyleType.dark,
+        return Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: EasyBookingButton(
+            text: 'Save location & close',
+            isEnabled: isEnabled,
+            isLoading: state.status == LocationsStatus.loading,
+            onPressed: _onPressed,
+            type: ButtonType.elevated,
+            buttonStyleType: ButtonStyleType.dark,
+          ),
         );
       },
     );
+  }
+
+  void _onPressed() {
+    final account = context.read<MainBloc>().state.account!;
+    final location = Location(
+      id: widget.location?.id ?? '',
+      name: _locationNameController.text,
+      price: int.parse(_priceController.text),
+      capacity: int.parse(_locationCapacityController.text),
+      addressLine1: _locationAddressLine1Controller.text,
+      addressLine2: _locationAddressLine2Controller.text.isNotEmpty
+          ? _locationAddressLine2Controller.text
+          : null,
+      description: _descriptionController.text.isNotEmpty
+          ? _descriptionController.text
+          : null,
+      images: widget.location?.images,
+      ownerEmail: account.email,
+    );
+
+    if (widget.location != null) {
+      context.read<LocationsBloc>().add(
+            LocationsEvent.locationUpdated(
+              location: location,
+              images: _locationPhotos,
+            ),
+          );
+    } else {
+      context.read<LocationsBloc>().add(
+            LocationsEvent.locationCreated(
+              location: location,
+              images: _locationPhotos,
+            ),
+          );
+    }
+  }
+
+  bool get isEnabled {
+    final hasNameChange = _locationNameController.text != widget.location?.name;
+    final hasCapacityChange = _locationCapacityController.text !=
+        widget.location?.capacity.toString();
+    final hasPriceChange =
+        _priceController.text != widget.location?.price.toString();
+    final hasAddressLine1Change =
+        _locationAddressLine1Controller.text != widget.location?.addressLine1;
+    final hasDescriptionChange =
+        _descriptionController.text != widget.location?.description;
+
+    final hasFormChanges = hasNameChange ||
+        hasCapacityChange ||
+        hasPriceChange ||
+        hasAddressLine1Change ||
+        hasDescriptionChange ||
+        _locationPhotos.isNotEmpty;
+
+    final fieldsNotEmpty = _locationNameController.text.isNotEmpty &&
+        _locationCapacityController.text.isNotEmpty &&
+        _locationAddressLine1Controller.text.isNotEmpty &&
+        _priceController.text.isNotEmpty;
+
+    final isEnabled = widget.location != null
+        ? hasFormChanges && fieldsNotEmpty
+        : fieldsNotEmpty && _locationPhotos.isNotEmpty;
+
+    return isEnabled;
   }
 }

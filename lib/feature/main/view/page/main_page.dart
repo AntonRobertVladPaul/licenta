@@ -62,23 +62,26 @@ class _MainBodyState extends State<_MainBody> {
     TabsRouter tabsRouter,
     AccountType accountType,
   ) =>
-      BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        selectedItemColor: EasyBookingColors.primaryText.value,
-        selectedLabelStyle: Theme.of(context).textTheme.labelMedium,
-        unselectedLabelStyle: Theme.of(context).textTheme.bodySmall,
-        unselectedItemColor: EasyBookingColors.secondaryText.value,
-        currentIndex: tabsRouter.activeIndex,
-        onTap: (tab) {
-          setState(
-            () => tabsRouter.setActiveIndex(tab),
-          );
-        },
-        items: getBottomNavItems(
-          tabsRouter.activeIndex,
-          accountType,
+      SizedBox(
+        height: 48,
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          selectedItemColor: EasyBookingColors.primaryText.value,
+          selectedLabelStyle: Theme.of(context).textTheme.labelMedium,
+          unselectedLabelStyle: Theme.of(context).textTheme.bodySmall,
+          unselectedItemColor: EasyBookingColors.secondaryText.value,
+          currentIndex: tabsRouter.activeIndex,
+          onTap: (tab) {
+            setState(
+              () => tabsRouter.setActiveIndex(tab),
+            );
+          },
+          items: getBottomNavItems(
+            tabsRouter.activeIndex,
+            accountType,
+          ),
         ),
       );
 
@@ -90,7 +93,7 @@ class _MainBodyState extends State<_MainBody> {
       BottomNavigationBarItem(
         label: accountType == AccountType.client ? 'Locations' : 'My Locations',
         icon: Asset.location.sizedWidget(
-          size: const Size(24, 24),
+          size: const Size(20, 20),
           color: activeIndex == 0
               ? EasyBookingColors.primaryText.value
               : EasyBookingColors.secondaryText.value,
@@ -105,8 +108,8 @@ class _MainBodyState extends State<_MainBody> {
 
   Widget _buildAvatarIcon(bool isActive) {
     return SizedBox(
-      height: 24,
-      width: 24,
+      height: 20,
+      width: 20,
       child: Asset.profileUser.widget(
         color: isActive
             ? EasyBookingColors.primaryText.value

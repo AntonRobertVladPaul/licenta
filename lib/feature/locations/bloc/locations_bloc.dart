@@ -1,3 +1,5 @@
+// ignore_for_file: cascade_invocations
+
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,35 +17,32 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
   LocationsBloc(LocationsRepository repository)
       : _repository = repository,
         super(const LocationsState()) {
-    on<_LocationsCreated>(_onLocationCreated);
+    on<_LocationCreated>(_onLocationCreated);
     on<_LocationsFetched>(_onLocationsFetched);
+    on<_LocationUpdated>(_onLocationUpdated);
+    on<_LocationDeleted>(_onLocationDeleted);
+    on<_ImageDeleted>(_onImageDeleted);
+    on<_LocationFetched>(_onLocationFetched);
   }
 
   final LocationsRepository _repository;
 
   Future<void> _onLocationCreated(
-    _LocationsCreated event,
+    _LocationCreated event,
     Emitter<LocationsState> emit,
   ) async {
     emit(state.copyWith(status: LocationsStatus.loading));
-    final location = Location(
-      name: event.name,
-      capacity: event.capacity,
-      addressLine1: event.addressLine1,
-      addressLine2: event.addressLine2,
-      price: event.price,
-      ownerEmail: event.owner.email,
-    );
+    final location = event.location;
 
     final result = await _repository.createLocation(location);
 
     await result.fold(
       (failure) async => emit(state.copyWith(status: LocationsStatus.failure)),
       (locationId) async {
+        final createdLocation = location.copyWith(id: locationId);
         final imagesResult = await _repository.uploadImagesToLocation(
           images: event.images,
-          locationId: locationId,
-          location: location,
+          location: createdLocation,
         );
         imagesResult.fold(
           (failure) => emit(state.copyWith(status: LocationsStatus.failure)),
@@ -67,6 +66,95 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
         state.copyWith(
           status: LocationsStatus.locationsFetched,
           locations: locations,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _onLocationUpdated(
+    _LocationUpdated event,
+    Emitter<LocationsState> emit,
+  ) async {
+    emit(state.copyWith(status: LocationsStatus.loading));
+
+    final result = await _repository.updateLocation(event.location);
+
+    await result.fold(
+      (_) async => emit(state.copyWith(status: LocationsStatus.failure)),
+      (_) async {
+        final imagesResult = await _repository.uploadImagesToLocation(
+          images: event.images,
+          isUpdate: true,
+          location: event.location,
+        );
+        imagesResult.fold(
+          (_) => emit(state.copyWith(status: LocationsStatus.failure)),
+          (resultedLocation) {
+            final locations = List<Location>.from(state.locations);
+
+            locations
+              ..removeWhere(
+                (location) => location.id == resultedLocation.id,
+              )
+              ..add(resultedLocation);
+
+            emit(
+              state.copyWith(
+                status: LocationsStatus.locationUpdated,
+                locations: locations,
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _onLocationDeleted(
+    _LocationDeleted event,
+    Emitter<LocationsState> emit,
+  ) async {
+    emit(state.copyWith(status: LocationsStatus.loading));
+
+    final result = await _repository.deleteLocation(event.locationId);
+
+    result.fold(
+      (_) => emit(state.copyWith(status: LocationsStatus.failure)),
+      (_) => emit(state.copyWith(status: LocationsStatus.locationDeleted)),
+    );
+  }
+
+  Future<void> _onImageDeleted(
+    _ImageDeleted event,
+    Emitter<LocationsState> emit,
+  ) async {
+    emit(state.copyWith(status: LocationsStatus.loading));
+
+    final result = await _repository.deleteImage(
+      locationId: event.locationId,
+      imageUrl: event.imageUrl,
+    );
+
+    result.fold(
+      (_) => emit(state.copyWith(status: LocationsStatus.failure)),
+      (_) => emit(state.copyWith(status: LocationsStatus.imageDeleted)),
+    );
+  }
+
+  Future<void> _onLocationFetched(
+    _LocationFetched event,
+    Emitter<LocationsState> emit,
+  ) async {
+    emit(state.copyWith(status: LocationsStatus.loading));
+
+    final result = await _repository.fetchOneLocation(event.locationId);
+
+    result.fold(
+      (_) => emit(state.copyWith(status: LocationsStatus.failure)),
+      (location) => emit(
+        state.copyWith(
+          status: LocationsStatus.locationFetched,
+          location: location,
         ),
       ),
     );

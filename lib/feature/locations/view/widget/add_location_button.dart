@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:licenta/app/app.dart';
 import 'package:licenta/resource/resource.dart';
 
-class CreateCampaignButton extends StatelessWidget {
-  const CreateCampaignButton({
+class AddLocationButton extends StatelessWidget {
+  const AddLocationButton({
     super.key,
     required this.isExtended,
   });
@@ -20,13 +20,13 @@ class CreateCampaignButton extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
-            width: !isExtended ? 50 : 150,
+            width: !isExtended ? 50 : 136,
             child: FloatingActionButton.extended(
               backgroundColor: EasyBookingColors.primary.value,
               isExtended: isExtended,
               shape: const RoundedRectangleBorder(),
               onPressed: () {
-                context.router.push(const AddLocationRoute());
+                context.router.push(AddLocationRoute());
               },
               icon: Asset.plus.widget(color: Colors.white),
               extendedPadding: const EdgeInsets.symmetric(horizontal: 16),

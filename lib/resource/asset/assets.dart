@@ -100,6 +100,7 @@ enum Asset {
 
   // Orders
   instagramPost('instagram-post.svg'),
+  unPaddedPinIcon('unpadded_pin.svg'),
   instagramStory('instagram-story.svg'),
   instagramReel('instagram-reel.svg'),
   tiktokVideo('tiktok-video.svg'),

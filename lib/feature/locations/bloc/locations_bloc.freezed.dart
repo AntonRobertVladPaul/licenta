@@ -18,51 +18,65 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LocationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            int price,
-            int capacity,
-            String addressLine1,
-            String? addressLine2,
-            List<File> images,
-            Account owner)
+    required TResult Function(Location location, List<File> images)
         locationCreated,
     required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, int price, int capacity, String addressLine1,
-            String? addressLine2, List<File> images, Account owner)?
-        locationCreated,
+    TResult? Function(Location location, List<File> images)? locationCreated,
     TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, int price, int capacity, String addressLine1,
-            String? addressLine2, List<File> images, Account owner)?
-        locationCreated,
+    TResult Function(Location location, List<File> images)? locationCreated,
     TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocationsCreated value) locationCreated,
+    required TResult Function(_LocationCreated value) locationCreated,
     required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocationsCreated value)? locationCreated,
+    TResult? Function(_LocationCreated value)? locationCreated,
     TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocationsCreated value)? locationCreated,
+    TResult Function(_LocationCreated value)? locationCreated,
     TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,106 +101,60 @@ class _$LocationsEventCopyWithImpl<$Res, $Val extends LocationsEvent>
 }
 
 /// @nodoc
-abstract class _$$_LocationsCreatedCopyWith<$Res> {
-  factory _$$_LocationsCreatedCopyWith(
-          _$_LocationsCreated value, $Res Function(_$_LocationsCreated) then) =
-      __$$_LocationsCreatedCopyWithImpl<$Res>;
+abstract class _$$_LocationCreatedCopyWith<$Res> {
+  factory _$$_LocationCreatedCopyWith(
+          _$_LocationCreated value, $Res Function(_$_LocationCreated) then) =
+      __$$_LocationCreatedCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String name,
-      int price,
-      int capacity,
-      String addressLine1,
-      String? addressLine2,
-      List<File> images,
-      Account owner});
+  $Res call({Location location, List<File> images});
 
-  $AccountCopyWith<$Res> get owner;
+  $LocationCopyWith<$Res> get location;
 }
 
 /// @nodoc
-class __$$_LocationsCreatedCopyWithImpl<$Res>
-    extends _$LocationsEventCopyWithImpl<$Res, _$_LocationsCreated>
-    implements _$$_LocationsCreatedCopyWith<$Res> {
-  __$$_LocationsCreatedCopyWithImpl(
-      _$_LocationsCreated _value, $Res Function(_$_LocationsCreated) _then)
+class __$$_LocationCreatedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_LocationCreated>
+    implements _$$_LocationCreatedCopyWith<$Res> {
+  __$$_LocationCreatedCopyWithImpl(
+      _$_LocationCreated _value, $Res Function(_$_LocationCreated) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? price = null,
-    Object? capacity = null,
-    Object? addressLine1 = null,
-    Object? addressLine2 = freezed,
+    Object? location = null,
     Object? images = null,
-    Object? owner = null,
   }) {
-    return _then(_$_LocationsCreated(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      capacity: null == capacity
-          ? _value.capacity
-          : capacity // ignore: cast_nullable_to_non_nullable
-              as int,
-      addressLine1: null == addressLine1
-          ? _value.addressLine1
-          : addressLine1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      addressLine2: freezed == addressLine2
-          ? _value.addressLine2
-          : addressLine2 // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_$_LocationCreated(
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<File>,
-      owner: null == owner
-          ? _value.owner
-          : owner // ignore: cast_nullable_to_non_nullable
-              as Account,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AccountCopyWith<$Res> get owner {
-    return $AccountCopyWith<$Res>(_value.owner, (value) {
-      return _then(_value.copyWith(owner: value));
+  $LocationCopyWith<$Res> get location {
+    return $LocationCopyWith<$Res>(_value.location, (value) {
+      return _then(_value.copyWith(location: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$_LocationsCreated implements _LocationsCreated {
-  const _$_LocationsCreated(
-      {required this.name,
-      required this.price,
-      required this.capacity,
-      required this.addressLine1,
-      this.addressLine2,
-      required final List<File> images,
-      required this.owner})
+class _$_LocationCreated implements _LocationCreated {
+  const _$_LocationCreated(
+      {required this.location, required final List<File> images})
       : _images = images;
 
   @override
-  final String name;
-  @override
-  final int price;
-  @override
-  final int capacity;
-  @override
-  final String addressLine1;
-  @override
-  final String? addressLine2;
+  final Location location;
   final List<File> _images;
   @override
   List<File> get images {
@@ -196,89 +164,71 @@ class _$_LocationsCreated implements _LocationsCreated {
   }
 
   @override
-  final Account owner;
-
-  @override
   String toString() {
-    return 'LocationsEvent.locationCreated(name: $name, price: $price, capacity: $capacity, addressLine1: $addressLine1, addressLine2: $addressLine2, images: $images, owner: $owner)';
+    return 'LocationsEvent.locationCreated(location: $location, images: $images)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LocationsCreated &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.capacity, capacity) ||
-                other.capacity == capacity) &&
-            (identical(other.addressLine1, addressLine1) ||
-                other.addressLine1 == addressLine1) &&
-            (identical(other.addressLine2, addressLine2) ||
-                other.addressLine2 == addressLine2) &&
-            const DeepCollectionEquality().equals(other._images, _images) &&
-            (identical(other.owner, owner) || other.owner == owner));
+            other is _$_LocationCreated &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      name,
-      price,
-      capacity,
-      addressLine1,
-      addressLine2,
-      const DeepCollectionEquality().hash(_images),
-      owner);
+      runtimeType, location, const DeepCollectionEquality().hash(_images));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LocationsCreatedCopyWith<_$_LocationsCreated> get copyWith =>
-      __$$_LocationsCreatedCopyWithImpl<_$_LocationsCreated>(this, _$identity);
+  _$$_LocationCreatedCopyWith<_$_LocationCreated> get copyWith =>
+      __$$_LocationCreatedCopyWithImpl<_$_LocationCreated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            int price,
-            int capacity,
-            String addressLine1,
-            String? addressLine2,
-            List<File> images,
-            Account owner)
+    required TResult Function(Location location, List<File> images)
         locationCreated,
     required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
   }) {
-    return locationCreated(
-        name, price, capacity, addressLine1, addressLine2, images, owner);
+    return locationCreated(location, images);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, int price, int capacity, String addressLine1,
-            String? addressLine2, List<File> images, Account owner)?
-        locationCreated,
+    TResult? Function(Location location, List<File> images)? locationCreated,
     TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
   }) {
-    return locationCreated?.call(
-        name, price, capacity, addressLine1, addressLine2, images, owner);
+    return locationCreated?.call(location, images);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, int price, int capacity, String addressLine1,
-            String? addressLine2, List<File> images, Account owner)?
-        locationCreated,
+    TResult Function(Location location, List<File> images)? locationCreated,
     TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
     required TResult orElse(),
   }) {
     if (locationCreated != null) {
-      return locationCreated(
-          name, price, capacity, addressLine1, addressLine2, images, owner);
+      return locationCreated(location, images);
     }
     return orElse();
   }
@@ -286,8 +236,12 @@ class _$_LocationsCreated implements _LocationsCreated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocationsCreated value) locationCreated,
+    required TResult Function(_LocationCreated value) locationCreated,
     required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
   }) {
     return locationCreated(this);
   }
@@ -295,8 +249,12 @@ class _$_LocationsCreated implements _LocationsCreated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocationsCreated value)? locationCreated,
+    TResult? Function(_LocationCreated value)? locationCreated,
     TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
   }) {
     return locationCreated?.call(this);
   }
@@ -304,8 +262,12 @@ class _$_LocationsCreated implements _LocationsCreated {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocationsCreated value)? locationCreated,
+    TResult Function(_LocationCreated value)? locationCreated,
     TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
     required TResult orElse(),
   }) {
     if (locationCreated != null) {
@@ -315,25 +277,15 @@ class _$_LocationsCreated implements _LocationsCreated {
   }
 }
 
-abstract class _LocationsCreated implements LocationsEvent {
-  const factory _LocationsCreated(
-      {required final String name,
-      required final int price,
-      required final int capacity,
-      required final String addressLine1,
-      final String? addressLine2,
-      required final List<File> images,
-      required final Account owner}) = _$_LocationsCreated;
+abstract class _LocationCreated implements LocationsEvent {
+  const factory _LocationCreated(
+      {required final Location location,
+      required final List<File> images}) = _$_LocationCreated;
 
-  String get name;
-  int get price;
-  int get capacity;
-  String get addressLine1;
-  String? get addressLine2;
+  Location get location;
   List<File> get images;
-  Account get owner;
   @JsonKey(ignore: true)
-  _$$_LocationsCreatedCopyWith<_$_LocationsCreated> get copyWith =>
+  _$$_LocationCreatedCopyWith<_$_LocationCreated> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -401,16 +353,14 @@ class _$_LocationsFetched implements _LocationsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            int price,
-            int capacity,
-            String addressLine1,
-            String? addressLine2,
-            List<File> images,
-            Account owner)
+    required TResult Function(Location location, List<File> images)
         locationCreated,
     required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
   }) {
     return locationsFetched(email);
   }
@@ -418,10 +368,12 @@ class _$_LocationsFetched implements _LocationsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, int price, int capacity, String addressLine1,
-            String? addressLine2, List<File> images, Account owner)?
-        locationCreated,
+    TResult? Function(Location location, List<File> images)? locationCreated,
     TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
   }) {
     return locationsFetched?.call(email);
   }
@@ -429,10 +381,12 @@ class _$_LocationsFetched implements _LocationsFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, int price, int capacity, String addressLine1,
-            String? addressLine2, List<File> images, Account owner)?
-        locationCreated,
+    TResult Function(Location location, List<File> images)? locationCreated,
     TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
     required TResult orElse(),
   }) {
     if (locationsFetched != null) {
@@ -444,8 +398,12 @@ class _$_LocationsFetched implements _LocationsFetched {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocationsCreated value) locationCreated,
+    required TResult Function(_LocationCreated value) locationCreated,
     required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
   }) {
     return locationsFetched(this);
   }
@@ -453,8 +411,12 @@ class _$_LocationsFetched implements _LocationsFetched {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocationsCreated value)? locationCreated,
+    TResult? Function(_LocationCreated value)? locationCreated,
     TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
   }) {
     return locationsFetched?.call(this);
   }
@@ -462,8 +424,12 @@ class _$_LocationsFetched implements _LocationsFetched {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocationsCreated value)? locationCreated,
+    TResult Function(_LocationCreated value)? locationCreated,
     TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
     required TResult orElse(),
   }) {
     if (locationsFetched != null) {
@@ -483,9 +449,693 @@ abstract class _LocationsFetched implements LocationsEvent {
 }
 
 /// @nodoc
+abstract class _$$_LocationUpdatedCopyWith<$Res> {
+  factory _$$_LocationUpdatedCopyWith(
+          _$_LocationUpdated value, $Res Function(_$_LocationUpdated) then) =
+      __$$_LocationUpdatedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Location location, List<File> images});
+
+  $LocationCopyWith<$Res> get location;
+}
+
+/// @nodoc
+class __$$_LocationUpdatedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_LocationUpdated>
+    implements _$$_LocationUpdatedCopyWith<$Res> {
+  __$$_LocationUpdatedCopyWithImpl(
+      _$_LocationUpdated _value, $Res Function(_$_LocationUpdated) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? location = null,
+    Object? images = null,
+  }) {
+    return _then(_$_LocationUpdated(
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<File>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocationCopyWith<$Res> get location {
+    return $LocationCopyWith<$Res>(_value.location, (value) {
+      return _then(_value.copyWith(location: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_LocationUpdated implements _LocationUpdated {
+  const _$_LocationUpdated(
+      {required this.location, required final List<File> images})
+      : _images = images;
+
+  @override
+  final Location location;
+  final List<File> _images;
+  @override
+  List<File> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
+  @override
+  String toString() {
+    return 'LocationsEvent.locationUpdated(location: $location, images: $images)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocationUpdated &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            const DeepCollectionEquality().equals(other._images, _images));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, location, const DeepCollectionEquality().hash(_images));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LocationUpdatedCopyWith<_$_LocationUpdated> get copyWith =>
+      __$$_LocationUpdatedCopyWithImpl<_$_LocationUpdated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Location location, List<File> images)
+        locationCreated,
+    required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
+  }) {
+    return locationUpdated(location, images);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Location location, List<File> images)? locationCreated,
+    TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
+  }) {
+    return locationUpdated?.call(location, images);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Location location, List<File> images)? locationCreated,
+    TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (locationUpdated != null) {
+      return locationUpdated(location, images);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocationCreated value) locationCreated,
+    required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
+  }) {
+    return locationUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocationCreated value)? locationCreated,
+    TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
+  }) {
+    return locationUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocationCreated value)? locationCreated,
+    TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (locationUpdated != null) {
+      return locationUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocationUpdated implements LocationsEvent {
+  const factory _LocationUpdated(
+      {required final Location location,
+      required final List<File> images}) = _$_LocationUpdated;
+
+  Location get location;
+  List<File> get images;
+  @JsonKey(ignore: true)
+  _$$_LocationUpdatedCopyWith<_$_LocationUpdated> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LocationDeletedCopyWith<$Res> {
+  factory _$$_LocationDeletedCopyWith(
+          _$_LocationDeleted value, $Res Function(_$_LocationDeleted) then) =
+      __$$_LocationDeletedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String locationId});
+}
+
+/// @nodoc
+class __$$_LocationDeletedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_LocationDeleted>
+    implements _$$_LocationDeletedCopyWith<$Res> {
+  __$$_LocationDeletedCopyWithImpl(
+      _$_LocationDeleted _value, $Res Function(_$_LocationDeleted) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? locationId = null,
+  }) {
+    return _then(_$_LocationDeleted(
+      locationId: null == locationId
+          ? _value.locationId
+          : locationId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LocationDeleted implements _LocationDeleted {
+  const _$_LocationDeleted({required this.locationId});
+
+  @override
+  final String locationId;
+
+  @override
+  String toString() {
+    return 'LocationsEvent.locationDeleted(locationId: $locationId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocationDeleted &&
+            (identical(other.locationId, locationId) ||
+                other.locationId == locationId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, locationId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LocationDeletedCopyWith<_$_LocationDeleted> get copyWith =>
+      __$$_LocationDeletedCopyWithImpl<_$_LocationDeleted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Location location, List<File> images)
+        locationCreated,
+    required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
+  }) {
+    return locationDeleted(locationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Location location, List<File> images)? locationCreated,
+    TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
+  }) {
+    return locationDeleted?.call(locationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Location location, List<File> images)? locationCreated,
+    TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (locationDeleted != null) {
+      return locationDeleted(locationId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocationCreated value) locationCreated,
+    required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
+  }) {
+    return locationDeleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocationCreated value)? locationCreated,
+    TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
+  }) {
+    return locationDeleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocationCreated value)? locationCreated,
+    TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (locationDeleted != null) {
+      return locationDeleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocationDeleted implements LocationsEvent {
+  const factory _LocationDeleted({required final String locationId}) =
+      _$_LocationDeleted;
+
+  String get locationId;
+  @JsonKey(ignore: true)
+  _$$_LocationDeletedCopyWith<_$_LocationDeleted> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ImageDeletedCopyWith<$Res> {
+  factory _$$_ImageDeletedCopyWith(
+          _$_ImageDeleted value, $Res Function(_$_ImageDeleted) then) =
+      __$$_ImageDeletedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String locationId, String imageUrl});
+}
+
+/// @nodoc
+class __$$_ImageDeletedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_ImageDeleted>
+    implements _$$_ImageDeletedCopyWith<$Res> {
+  __$$_ImageDeletedCopyWithImpl(
+      _$_ImageDeleted _value, $Res Function(_$_ImageDeleted) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? locationId = null,
+    Object? imageUrl = null,
+  }) {
+    return _then(_$_ImageDeleted(
+      locationId: null == locationId
+          ? _value.locationId
+          : locationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ImageDeleted implements _ImageDeleted {
+  const _$_ImageDeleted({required this.locationId, required this.imageUrl});
+
+  @override
+  final String locationId;
+  @override
+  final String imageUrl;
+
+  @override
+  String toString() {
+    return 'LocationsEvent.imageDeleted(locationId: $locationId, imageUrl: $imageUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ImageDeleted &&
+            (identical(other.locationId, locationId) ||
+                other.locationId == locationId) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, locationId, imageUrl);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ImageDeletedCopyWith<_$_ImageDeleted> get copyWith =>
+      __$$_ImageDeletedCopyWithImpl<_$_ImageDeleted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Location location, List<File> images)
+        locationCreated,
+    required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
+  }) {
+    return imageDeleted(locationId, imageUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Location location, List<File> images)? locationCreated,
+    TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
+  }) {
+    return imageDeleted?.call(locationId, imageUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Location location, List<File> images)? locationCreated,
+    TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (imageDeleted != null) {
+      return imageDeleted(locationId, imageUrl);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocationCreated value) locationCreated,
+    required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
+  }) {
+    return imageDeleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocationCreated value)? locationCreated,
+    TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
+  }) {
+    return imageDeleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocationCreated value)? locationCreated,
+    TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (imageDeleted != null) {
+      return imageDeleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ImageDeleted implements LocationsEvent {
+  const factory _ImageDeleted(
+      {required final String locationId,
+      required final String imageUrl}) = _$_ImageDeleted;
+
+  String get locationId;
+  String get imageUrl;
+  @JsonKey(ignore: true)
+  _$$_ImageDeletedCopyWith<_$_ImageDeleted> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LocationFetchedCopyWith<$Res> {
+  factory _$$_LocationFetchedCopyWith(
+          _$_LocationFetched value, $Res Function(_$_LocationFetched) then) =
+      __$$_LocationFetchedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String locationId});
+}
+
+/// @nodoc
+class __$$_LocationFetchedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_LocationFetched>
+    implements _$$_LocationFetchedCopyWith<$Res> {
+  __$$_LocationFetchedCopyWithImpl(
+      _$_LocationFetched _value, $Res Function(_$_LocationFetched) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? locationId = null,
+  }) {
+    return _then(_$_LocationFetched(
+      locationId: null == locationId
+          ? _value.locationId
+          : locationId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LocationFetched implements _LocationFetched {
+  const _$_LocationFetched({required this.locationId});
+
+  @override
+  final String locationId;
+
+  @override
+  String toString() {
+    return 'LocationsEvent.locationFetched(locationId: $locationId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocationFetched &&
+            (identical(other.locationId, locationId) ||
+                other.locationId == locationId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, locationId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LocationFetchedCopyWith<_$_LocationFetched> get copyWith =>
+      __$$_LocationFetchedCopyWithImpl<_$_LocationFetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Location location, List<File> images)
+        locationCreated,
+    required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
+  }) {
+    return locationFetched(locationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Location location, List<File> images)? locationCreated,
+    TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
+  }) {
+    return locationFetched?.call(locationId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Location location, List<File> images)? locationCreated,
+    TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (locationFetched != null) {
+      return locationFetched(locationId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocationCreated value) locationCreated,
+    required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
+  }) {
+    return locationFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocationCreated value)? locationCreated,
+    TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
+  }) {
+    return locationFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocationCreated value)? locationCreated,
+    TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
+    required TResult orElse(),
+  }) {
+    if (locationFetched != null) {
+      return locationFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocationFetched implements LocationsEvent {
+  const factory _LocationFetched({required final String locationId}) =
+      _$_LocationFetched;
+
+  String get locationId;
+  @JsonKey(ignore: true)
+  _$$_LocationFetchedCopyWith<_$_LocationFetched> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$LocationsState {
   LocationsStatus get status => throw _privateConstructorUsedError;
   List<Location> get locations => throw _privateConstructorUsedError;
+  Location? get location => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocationsStateCopyWith<LocationsState> get copyWith =>
@@ -498,7 +1148,10 @@ abstract class $LocationsStateCopyWith<$Res> {
           LocationsState value, $Res Function(LocationsState) then) =
       _$LocationsStateCopyWithImpl<$Res, LocationsState>;
   @useResult
-  $Res call({LocationsStatus status, List<Location> locations});
+  $Res call(
+      {LocationsStatus status, List<Location> locations, Location? location});
+
+  $LocationCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -516,6 +1169,7 @@ class _$LocationsStateCopyWithImpl<$Res, $Val extends LocationsState>
   $Res call({
     Object? status = null,
     Object? locations = null,
+    Object? location = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -526,7 +1180,23 @@ class _$LocationsStateCopyWithImpl<$Res, $Val extends LocationsState>
           ? _value.locations
           : locations // ignore: cast_nullable_to_non_nullable
               as List<Location>,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocationCopyWith<$Res>? get location {
+    if (_value.location == null) {
+      return null;
+    }
+
+    return $LocationCopyWith<$Res>(_value.location!, (value) {
+      return _then(_value.copyWith(location: value) as $Val);
+    });
   }
 }
 
@@ -538,7 +1208,11 @@ abstract class _$$_LocationsStateCopyWith<$Res>
       __$$_LocationsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LocationsStatus status, List<Location> locations});
+  $Res call(
+      {LocationsStatus status, List<Location> locations, Location? location});
+
+  @override
+  $LocationCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -554,6 +1228,7 @@ class __$$_LocationsStateCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? locations = null,
+    Object? location = freezed,
   }) {
     return _then(_$_LocationsState(
       status: null == status
@@ -564,6 +1239,10 @@ class __$$_LocationsStateCopyWithImpl<$Res>
           ? _value._locations
           : locations // ignore: cast_nullable_to_non_nullable
               as List<Location>,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location?,
     ));
   }
 }
@@ -573,7 +1252,8 @@ class __$$_LocationsStateCopyWithImpl<$Res>
 class _$_LocationsState implements _LocationsState {
   const _$_LocationsState(
       {this.status = LocationsStatus.initial,
-      final List<Location> locations = const []})
+      final List<Location> locations = const [],
+      this.location})
       : _locations = locations;
 
   @override
@@ -589,8 +1269,11 @@ class _$_LocationsState implements _LocationsState {
   }
 
   @override
+  final Location? location;
+
+  @override
   String toString() {
-    return 'LocationsState(status: $status, locations: $locations)';
+    return 'LocationsState(status: $status, locations: $locations, location: $location)';
   }
 
   @override
@@ -600,12 +1283,14 @@ class _$_LocationsState implements _LocationsState {
             other is _$_LocationsState &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
-                .equals(other._locations, _locations));
+                .equals(other._locations, _locations) &&
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, const DeepCollectionEquality().hash(_locations));
+  int get hashCode => Object.hash(runtimeType, status,
+      const DeepCollectionEquality().hash(_locations), location);
 
   @JsonKey(ignore: true)
   @override
@@ -617,12 +1302,15 @@ class _$_LocationsState implements _LocationsState {
 abstract class _LocationsState implements LocationsState {
   const factory _LocationsState(
       {final LocationsStatus status,
-      final List<Location> locations}) = _$_LocationsState;
+      final List<Location> locations,
+      final Location? location}) = _$_LocationsState;
 
   @override
   LocationsStatus get status;
   @override
   List<Location> get locations;
+  @override
+  Location? get location;
   @override
   @JsonKey(ignore: true)
   _$$_LocationsStateCopyWith<_$_LocationsState> get copyWith =>
