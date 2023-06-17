@@ -1,8 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:licenta/core/core.dart';
-import 'package:licenta/feature/locations/entity/entity.dart';
-
-part 'location.dart';
 
 part 'account.freezed.dart';
 
@@ -15,6 +12,7 @@ class Account with _$Account {
     required String lastName,
     required String email,
     required String password,
+    @Default(0) int amount,
     required AccountType accountType,
   }) = _Account;
 

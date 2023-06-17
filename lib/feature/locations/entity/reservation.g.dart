@@ -8,12 +8,18 @@ part of 'reservation.dart';
 
 _$_Reservation _$$_ReservationFromJson(Map<String, dynamic> json) =>
     _$_Reservation(
-      startDate: DateTime.parse(json['startDate'] as String),
-      endDate: DateTime.parse(json['endDate'] as String),
+      bookedDates: (json['bookedDates'] as List<dynamic>?)
+              ?.map((e) => DateTime.parse(e as String))
+              .toList() ??
+          const [],
+      isDoorOpen: json['isDoorOpen'] as bool? ?? false,
+      openDoorCode: json['openDoorCode'] as String?,
     );
 
 Map<String, dynamic> _$$_ReservationToJson(_$_Reservation instance) =>
     <String, dynamic>{
-      'startDate': instance.startDate.toIso8601String(),
-      'endDate': instance.endDate.toIso8601String(),
+      'bookedDates':
+          instance.bookedDates.map((e) => e.toIso8601String()).toList(),
+      'isDoorOpen': instance.isDoorOpen,
+      'openDoorCode': instance.openDoorCode,
     };

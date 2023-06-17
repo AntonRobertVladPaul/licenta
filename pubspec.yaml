@@ -13,6 +13,7 @@ dependencies:
   bloc: ^8.0.3
   bloc_concurrency: ^0.2.0
   cached_network_image: ^3.2.2
+  calendar_date_picker2: ^0.5.2
   collection: ^1.16.0
   cupertino_icons: ^1.0.2
   custom_refresh_indicator: ^2.0.1
@@ -35,6 +36,7 @@ dependencies:
   flutter_svg: ^1.1.0
   freezed_annotation: ^2.0.3
   image_picker: ^0.8.8
+  intl: ^0.18.0
   json_serializable: ^6.2.0
   modal_bottom_sheet:
     git:

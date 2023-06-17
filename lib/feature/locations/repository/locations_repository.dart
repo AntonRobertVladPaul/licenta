@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:licenta/core/core.dart';
 import 'package:licenta/core/utils/data_source_handler.dart';
 import 'package:licenta/feature/locations/data_source/data_source.dart';
+import 'package:licenta/feature/locations/entity/entity.dart';
 
 class LocationsRepository {
   LocationsRepository({
@@ -64,6 +65,20 @@ class LocationsRepository {
   Future<Either<Failure, Location>> fetchOneLocation(String locationId) async {
     return DataSourceHandler.execute(
       () => _remoteDataSource.fetchOneLocation(locationId),
+    );
+  }
+
+  Future<Either<Failure, void>> bookLocation({
+    required Location location,
+    required int amount,
+    required List<Reservation> reservations,
+  }) async {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.bookLocation(
+        location: location,
+        amount: amount,
+        reservations: reservations,
+      ),
     );
   }
 }

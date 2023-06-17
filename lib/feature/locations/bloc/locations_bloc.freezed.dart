@@ -26,6 +26,10 @@ mixin _$LocationsEvent {
     required TResult Function(String locationId) locationDeleted,
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +40,10 @@ mixin _$LocationsEvent {
     TResult? Function(String locationId)? locationDeleted,
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +54,10 @@ mixin _$LocationsEvent {
     TResult Function(String locationId)? locationDeleted,
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +69,8 @@ mixin _$LocationsEvent {
     required TResult Function(_LocationDeleted value) locationDeleted,
     required TResult Function(_ImageDeleted value) imageDeleted,
     required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +81,8 @@ mixin _$LocationsEvent {
     TResult? Function(_LocationDeleted value)? locationDeleted,
     TResult? Function(_ImageDeleted value)? imageDeleted,
     TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +93,8 @@ mixin _$LocationsEvent {
     TResult Function(_LocationDeleted value)? locationDeleted,
     TResult Function(_ImageDeleted value)? imageDeleted,
     TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -199,6 +217,10 @@ class _$_LocationCreated implements _LocationCreated {
     required TResult Function(String locationId) locationDeleted,
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
   }) {
     return locationCreated(location, images);
   }
@@ -212,6 +234,10 @@ class _$_LocationCreated implements _LocationCreated {
     TResult? Function(String locationId)? locationDeleted,
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
   }) {
     return locationCreated?.call(location, images);
   }
@@ -225,6 +251,10 @@ class _$_LocationCreated implements _LocationCreated {
     TResult Function(String locationId)? locationDeleted,
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
     required TResult orElse(),
   }) {
     if (locationCreated != null) {
@@ -242,6 +272,8 @@ class _$_LocationCreated implements _LocationCreated {
     required TResult Function(_LocationDeleted value) locationDeleted,
     required TResult Function(_ImageDeleted value) imageDeleted,
     required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
   }) {
     return locationCreated(this);
   }
@@ -255,6 +287,8 @@ class _$_LocationCreated implements _LocationCreated {
     TResult? Function(_LocationDeleted value)? locationDeleted,
     TResult? Function(_ImageDeleted value)? imageDeleted,
     TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
   }) {
     return locationCreated?.call(this);
   }
@@ -268,6 +302,8 @@ class _$_LocationCreated implements _LocationCreated {
     TResult Function(_LocationDeleted value)? locationDeleted,
     TResult Function(_ImageDeleted value)? imageDeleted,
     TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
     required TResult orElse(),
   }) {
     if (locationCreated != null) {
@@ -361,6 +397,10 @@ class _$_LocationsFetched implements _LocationsFetched {
     required TResult Function(String locationId) locationDeleted,
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
   }) {
     return locationsFetched(email);
   }
@@ -374,6 +414,10 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult? Function(String locationId)? locationDeleted,
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
   }) {
     return locationsFetched?.call(email);
   }
@@ -387,6 +431,10 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult Function(String locationId)? locationDeleted,
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
     required TResult orElse(),
   }) {
     if (locationsFetched != null) {
@@ -404,6 +452,8 @@ class _$_LocationsFetched implements _LocationsFetched {
     required TResult Function(_LocationDeleted value) locationDeleted,
     required TResult Function(_ImageDeleted value) imageDeleted,
     required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
   }) {
     return locationsFetched(this);
   }
@@ -417,6 +467,8 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult? Function(_LocationDeleted value)? locationDeleted,
     TResult? Function(_ImageDeleted value)? imageDeleted,
     TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
   }) {
     return locationsFetched?.call(this);
   }
@@ -430,6 +482,8 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult Function(_LocationDeleted value)? locationDeleted,
     TResult Function(_ImageDeleted value)? imageDeleted,
     TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
     required TResult orElse(),
   }) {
     if (locationsFetched != null) {
@@ -547,6 +601,10 @@ class _$_LocationUpdated implements _LocationUpdated {
     required TResult Function(String locationId) locationDeleted,
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
   }) {
     return locationUpdated(location, images);
   }
@@ -560,6 +618,10 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult? Function(String locationId)? locationDeleted,
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
   }) {
     return locationUpdated?.call(location, images);
   }
@@ -573,6 +635,10 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult Function(String locationId)? locationDeleted,
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
     required TResult orElse(),
   }) {
     if (locationUpdated != null) {
@@ -590,6 +656,8 @@ class _$_LocationUpdated implements _LocationUpdated {
     required TResult Function(_LocationDeleted value) locationDeleted,
     required TResult Function(_ImageDeleted value) imageDeleted,
     required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
   }) {
     return locationUpdated(this);
   }
@@ -603,6 +671,8 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult? Function(_LocationDeleted value)? locationDeleted,
     TResult? Function(_ImageDeleted value)? imageDeleted,
     TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
   }) {
     return locationUpdated?.call(this);
   }
@@ -616,6 +686,8 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult Function(_LocationDeleted value)? locationDeleted,
     TResult Function(_ImageDeleted value)? imageDeleted,
     TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
     required TResult orElse(),
   }) {
     if (locationUpdated != null) {
@@ -710,6 +782,10 @@ class _$_LocationDeleted implements _LocationDeleted {
     required TResult Function(String locationId) locationDeleted,
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
   }) {
     return locationDeleted(locationId);
   }
@@ -723,6 +799,10 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult? Function(String locationId)? locationDeleted,
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
   }) {
     return locationDeleted?.call(locationId);
   }
@@ -736,6 +816,10 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult Function(String locationId)? locationDeleted,
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
     required TResult orElse(),
   }) {
     if (locationDeleted != null) {
@@ -753,6 +837,8 @@ class _$_LocationDeleted implements _LocationDeleted {
     required TResult Function(_LocationDeleted value) locationDeleted,
     required TResult Function(_ImageDeleted value) imageDeleted,
     required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
   }) {
     return locationDeleted(this);
   }
@@ -766,6 +852,8 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult? Function(_LocationDeleted value)? locationDeleted,
     TResult? Function(_ImageDeleted value)? imageDeleted,
     TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
   }) {
     return locationDeleted?.call(this);
   }
@@ -779,6 +867,8 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult Function(_LocationDeleted value)? locationDeleted,
     TResult Function(_ImageDeleted value)? imageDeleted,
     TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
     required TResult orElse(),
   }) {
     if (locationDeleted != null) {
@@ -880,6 +970,10 @@ class _$_ImageDeleted implements _ImageDeleted {
     required TResult Function(String locationId) locationDeleted,
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
   }) {
     return imageDeleted(locationId, imageUrl);
   }
@@ -893,6 +987,10 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult? Function(String locationId)? locationDeleted,
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
   }) {
     return imageDeleted?.call(locationId, imageUrl);
   }
@@ -906,6 +1004,10 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult Function(String locationId)? locationDeleted,
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
     required TResult orElse(),
   }) {
     if (imageDeleted != null) {
@@ -923,6 +1025,8 @@ class _$_ImageDeleted implements _ImageDeleted {
     required TResult Function(_LocationDeleted value) locationDeleted,
     required TResult Function(_ImageDeleted value) imageDeleted,
     required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
   }) {
     return imageDeleted(this);
   }
@@ -936,6 +1040,8 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult? Function(_LocationDeleted value)? locationDeleted,
     TResult? Function(_ImageDeleted value)? imageDeleted,
     TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
   }) {
     return imageDeleted?.call(this);
   }
@@ -949,6 +1055,8 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult Function(_LocationDeleted value)? locationDeleted,
     TResult Function(_ImageDeleted value)? imageDeleted,
     TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
     required TResult orElse(),
   }) {
     if (imageDeleted != null) {
@@ -1043,6 +1151,10 @@ class _$_LocationFetched implements _LocationFetched {
     required TResult Function(String locationId) locationDeleted,
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
   }) {
     return locationFetched(locationId);
   }
@@ -1056,6 +1168,10 @@ class _$_LocationFetched implements _LocationFetched {
     TResult? Function(String locationId)? locationDeleted,
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
   }) {
     return locationFetched?.call(locationId);
   }
@@ -1069,6 +1185,10 @@ class _$_LocationFetched implements _LocationFetched {
     TResult Function(String locationId)? locationDeleted,
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
     required TResult orElse(),
   }) {
     if (locationFetched != null) {
@@ -1086,6 +1206,8 @@ class _$_LocationFetched implements _LocationFetched {
     required TResult Function(_LocationDeleted value) locationDeleted,
     required TResult Function(_ImageDeleted value) imageDeleted,
     required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
   }) {
     return locationFetched(this);
   }
@@ -1099,6 +1221,8 @@ class _$_LocationFetched implements _LocationFetched {
     TResult? Function(_LocationDeleted value)? locationDeleted,
     TResult? Function(_ImageDeleted value)? imageDeleted,
     TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
   }) {
     return locationFetched?.call(this);
   }
@@ -1112,6 +1236,8 @@ class _$_LocationFetched implements _LocationFetched {
     TResult Function(_LocationDeleted value)? locationDeleted,
     TResult Function(_ImageDeleted value)? imageDeleted,
     TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
     required TResult orElse(),
   }) {
     if (locationFetched != null) {
@@ -1132,10 +1258,412 @@ abstract class _LocationFetched implements LocationsEvent {
 }
 
 /// @nodoc
+abstract class _$$_BookDatesSavedCopyWith<$Res> {
+  factory _$$_BookDatesSavedCopyWith(
+          _$_BookDatesSaved value, $Res Function(_$_BookDatesSaved) then) =
+      __$$_BookDatesSavedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<DateTime> bookedDates});
+}
+
+/// @nodoc
+class __$$_BookDatesSavedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_BookDatesSaved>
+    implements _$$_BookDatesSavedCopyWith<$Res> {
+  __$$_BookDatesSavedCopyWithImpl(
+      _$_BookDatesSaved _value, $Res Function(_$_BookDatesSaved) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bookedDates = null,
+  }) {
+    return _then(_$_BookDatesSaved(
+      bookedDates: null == bookedDates
+          ? _value._bookedDates
+          : bookedDates // ignore: cast_nullable_to_non_nullable
+              as List<DateTime>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_BookDatesSaved implements _BookDatesSaved {
+  const _$_BookDatesSaved({required final List<DateTime> bookedDates})
+      : _bookedDates = bookedDates;
+
+  final List<DateTime> _bookedDates;
+  @override
+  List<DateTime> get bookedDates {
+    if (_bookedDates is EqualUnmodifiableListView) return _bookedDates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bookedDates);
+  }
+
+  @override
+  String toString() {
+    return 'LocationsEvent.bookDatesSaved(bookedDates: $bookedDates)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BookDatesSaved &&
+            const DeepCollectionEquality()
+                .equals(other._bookedDates, _bookedDates));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_bookedDates));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_BookDatesSavedCopyWith<_$_BookDatesSaved> get copyWith =>
+      __$$_BookDatesSavedCopyWithImpl<_$_BookDatesSaved>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Location location, List<File> images)
+        locationCreated,
+    required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
+  }) {
+    return bookDatesSaved(bookedDates);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Location location, List<File> images)? locationCreated,
+    TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
+  }) {
+    return bookDatesSaved?.call(bookedDates);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Location location, List<File> images)? locationCreated,
+    TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
+    required TResult orElse(),
+  }) {
+    if (bookDatesSaved != null) {
+      return bookDatesSaved(bookedDates);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocationCreated value) locationCreated,
+    required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
+  }) {
+    return bookDatesSaved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocationCreated value)? locationCreated,
+    TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
+  }) {
+    return bookDatesSaved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocationCreated value)? locationCreated,
+    TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
+    required TResult orElse(),
+  }) {
+    if (bookDatesSaved != null) {
+      return bookDatesSaved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BookDatesSaved implements LocationsEvent {
+  const factory _BookDatesSaved({required final List<DateTime> bookedDates}) =
+      _$_BookDatesSaved;
+
+  List<DateTime> get bookedDates;
+  @JsonKey(ignore: true)
+  _$$_BookDatesSavedCopyWith<_$_BookDatesSaved> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LocationBookedCopyWith<$Res> {
+  factory _$$_LocationBookedCopyWith(
+          _$_LocationBooked value, $Res Function(_$_LocationBooked) then) =
+      __$$_LocationBookedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int amount, String cardNumber, String cvv, String expiryDate});
+}
+
+/// @nodoc
+class __$$_LocationBookedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_LocationBooked>
+    implements _$$_LocationBookedCopyWith<$Res> {
+  __$$_LocationBookedCopyWithImpl(
+      _$_LocationBooked _value, $Res Function(_$_LocationBooked) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amount = null,
+    Object? cardNumber = null,
+    Object? cvv = null,
+    Object? expiryDate = null,
+  }) {
+    return _then(_$_LocationBooked(
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+      cardNumber: null == cardNumber
+          ? _value.cardNumber
+          : cardNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      cvv: null == cvv
+          ? _value.cvv
+          : cvv // ignore: cast_nullable_to_non_nullable
+              as String,
+      expiryDate: null == expiryDate
+          ? _value.expiryDate
+          : expiryDate // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LocationBooked implements _LocationBooked {
+  const _$_LocationBooked(
+      {required this.amount,
+      required this.cardNumber,
+      required this.cvv,
+      required this.expiryDate});
+
+  @override
+  final int amount;
+  @override
+  final String cardNumber;
+  @override
+  final String cvv;
+  @override
+  final String expiryDate;
+
+  @override
+  String toString() {
+    return 'LocationsEvent.locationBooked(amount: $amount, cardNumber: $cardNumber, cvv: $cvv, expiryDate: $expiryDate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocationBooked &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.cardNumber, cardNumber) ||
+                other.cardNumber == cardNumber) &&
+            (identical(other.cvv, cvv) || other.cvv == cvv) &&
+            (identical(other.expiryDate, expiryDate) ||
+                other.expiryDate == expiryDate));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, amount, cardNumber, cvv, expiryDate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LocationBookedCopyWith<_$_LocationBooked> get copyWith =>
+      __$$_LocationBookedCopyWithImpl<_$_LocationBooked>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Location location, List<File> images)
+        locationCreated,
+    required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)
+        locationBooked,
+  }) {
+    return locationBooked(amount, cardNumber, cvv, expiryDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Location location, List<File> images)? locationCreated,
+    TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
+  }) {
+    return locationBooked?.call(amount, cardNumber, cvv, expiryDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Location location, List<File> images)? locationCreated,
+    TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(
+            int amount, String cardNumber, String cvv, String expiryDate)?
+        locationBooked,
+    required TResult orElse(),
+  }) {
+    if (locationBooked != null) {
+      return locationBooked(amount, cardNumber, cvv, expiryDate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocationCreated value) locationCreated,
+    required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
+  }) {
+    return locationBooked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocationCreated value)? locationCreated,
+    TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
+  }) {
+    return locationBooked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocationCreated value)? locationCreated,
+    TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
+    required TResult orElse(),
+  }) {
+    if (locationBooked != null) {
+      return locationBooked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocationBooked implements LocationsEvent {
+  const factory _LocationBooked(
+      {required final int amount,
+      required final String cardNumber,
+      required final String cvv,
+      required final String expiryDate}) = _$_LocationBooked;
+
+  int get amount;
+  String get cardNumber;
+  String get cvv;
+  String get expiryDate;
+  @JsonKey(ignore: true)
+  _$$_LocationBookedCopyWith<_$_LocationBooked> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$LocationsState {
   LocationsStatus get status => throw _privateConstructorUsedError;
   List<Location> get locations => throw _privateConstructorUsedError;
   Location? get location => throw _privateConstructorUsedError;
+  List<DateTime> get bookedDates => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocationsStateCopyWith<LocationsState> get copyWith =>
@@ -1149,7 +1677,10 @@ abstract class $LocationsStateCopyWith<$Res> {
       _$LocationsStateCopyWithImpl<$Res, LocationsState>;
   @useResult
   $Res call(
-      {LocationsStatus status, List<Location> locations, Location? location});
+      {LocationsStatus status,
+      List<Location> locations,
+      Location? location,
+      List<DateTime> bookedDates});
 
   $LocationCopyWith<$Res>? get location;
 }
@@ -1170,6 +1701,7 @@ class _$LocationsStateCopyWithImpl<$Res, $Val extends LocationsState>
     Object? status = null,
     Object? locations = null,
     Object? location = freezed,
+    Object? bookedDates = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -1184,6 +1716,10 @@ class _$LocationsStateCopyWithImpl<$Res, $Val extends LocationsState>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Location?,
+      bookedDates: null == bookedDates
+          ? _value.bookedDates
+          : bookedDates // ignore: cast_nullable_to_non_nullable
+              as List<DateTime>,
     ) as $Val);
   }
 
@@ -1209,7 +1745,10 @@ abstract class _$$_LocationsStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {LocationsStatus status, List<Location> locations, Location? location});
+      {LocationsStatus status,
+      List<Location> locations,
+      Location? location,
+      List<DateTime> bookedDates});
 
   @override
   $LocationCopyWith<$Res>? get location;
@@ -1229,6 +1768,7 @@ class __$$_LocationsStateCopyWithImpl<$Res>
     Object? status = null,
     Object? locations = null,
     Object? location = freezed,
+    Object? bookedDates = null,
   }) {
     return _then(_$_LocationsState(
       status: null == status
@@ -1243,6 +1783,10 @@ class __$$_LocationsStateCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Location?,
+      bookedDates: null == bookedDates
+          ? _value._bookedDates
+          : bookedDates // ignore: cast_nullable_to_non_nullable
+              as List<DateTime>,
     ));
   }
 }
@@ -1253,8 +1797,10 @@ class _$_LocationsState implements _LocationsState {
   const _$_LocationsState(
       {this.status = LocationsStatus.initial,
       final List<Location> locations = const [],
-      this.location})
-      : _locations = locations;
+      this.location,
+      final List<DateTime> bookedDates = const []})
+      : _locations = locations,
+        _bookedDates = bookedDates;
 
   @override
   @JsonKey()
@@ -1270,10 +1816,18 @@ class _$_LocationsState implements _LocationsState {
 
   @override
   final Location? location;
+  final List<DateTime> _bookedDates;
+  @override
+  @JsonKey()
+  List<DateTime> get bookedDates {
+    if (_bookedDates is EqualUnmodifiableListView) return _bookedDates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bookedDates);
+  }
 
   @override
   String toString() {
-    return 'LocationsState(status: $status, locations: $locations, location: $location)';
+    return 'LocationsState(status: $status, locations: $locations, location: $location, bookedDates: $bookedDates)';
   }
 
   @override
@@ -1285,12 +1839,18 @@ class _$_LocationsState implements _LocationsState {
             const DeepCollectionEquality()
                 .equals(other._locations, _locations) &&
             (identical(other.location, location) ||
-                other.location == location));
+                other.location == location) &&
+            const DeepCollectionEquality()
+                .equals(other._bookedDates, _bookedDates));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status,
-      const DeepCollectionEquality().hash(_locations), location);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      const DeepCollectionEquality().hash(_locations),
+      location,
+      const DeepCollectionEquality().hash(_bookedDates));
 
   @JsonKey(ignore: true)
   @override
@@ -1303,7 +1863,8 @@ abstract class _LocationsState implements LocationsState {
   const factory _LocationsState(
       {final LocationsStatus status,
       final List<Location> locations,
-      final Location? location}) = _$_LocationsState;
+      final Location? location,
+      final List<DateTime> bookedDates}) = _$_LocationsState;
 
   @override
   LocationsStatus get status;
@@ -1311,6 +1872,8 @@ abstract class _LocationsState implements LocationsState {
   List<Location> get locations;
   @override
   Location? get location;
+  @override
+  List<DateTime> get bookedDates;
   @override
   @JsonKey(ignore: true)
   _$$_LocationsStateCopyWith<_$_LocationsState> get copyWith =>

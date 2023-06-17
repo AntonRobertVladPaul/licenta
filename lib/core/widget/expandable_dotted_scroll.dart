@@ -17,13 +17,10 @@ class ExpandableDottedScroll extends StatelessWidget {
         return SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           controller: controller,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraint.maxHeight),
-              child: IntrinsicHeight(
-                child: child,
-              ),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraint.maxHeight),
+            child: IntrinsicHeight(
+              child: child,
             ),
           ),
         );

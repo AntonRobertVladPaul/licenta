@@ -77,6 +77,15 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    PaymentRoute.name: (routeData) {
+      return CustomPage<void>(
+        routeData: routeData,
+        child: const PaymentPage(),
+        customRouteBuilder: cupertinoModalBuilder,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     LocationsRoute.name: (routeData) {
       return MaterialPageX<void>(
         routeData: routeData,
@@ -141,6 +150,11 @@ class _$AppRouter extends RootStackRouter {
             RouteConfig(
               LocationDetailsRoute.name,
               path: 'location-details-page',
+              parent: MainRouterRoute.name,
+            ),
+            RouteConfig(
+              PaymentRoute.name,
+              path: 'payment-page',
               parent: MainRouterRoute.name,
             ),
           ],
@@ -313,6 +327,18 @@ class LocationDetailsRouteArgs {
   String toString() {
     return 'LocationDetailsRouteArgs{key: $key, location: $location}';
   }
+}
+
+/// generated route for
+/// [PaymentPage]
+class PaymentRoute extends PageRouteInfo<void> {
+  const PaymentRoute()
+      : super(
+          PaymentRoute.name,
+          path: 'payment-page',
+        );
+
+  static const String name = 'PaymentRoute';
 }
 
 /// generated route for

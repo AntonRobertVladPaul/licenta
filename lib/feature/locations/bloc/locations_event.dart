@@ -28,4 +28,15 @@ class LocationsEvent with _$LocationsEvent {
   const factory LocationsEvent.locationFetched({
     required String locationId,
   }) = _LocationFetched;
+
+  const factory LocationsEvent.bookDatesSaved({
+    required List<DateTime> bookedDates,
+  }) = _BookDatesSaved;
+
+  const factory LocationsEvent.locationBooked({
+    required int amount,
+    required String cardNumber,
+    required String cvv,
+    required String expiryDate,
+  }) = _LocationBooked;
 }

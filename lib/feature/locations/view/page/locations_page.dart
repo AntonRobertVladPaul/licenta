@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:licenta/core/core.dart';
+import 'package:licenta/core/utils/bottom_sheet_utils.dart';
 import 'package:licenta/core/widget/refreshable_widget.dart';
 import 'package:licenta/feature/locations/bloc/bloc.dart';
 import 'package:licenta/feature/locations/locations.dart';
@@ -81,6 +82,9 @@ class _LocationsBodyState extends State<_LocationsBody> {
                           ),
                         ),
                   );
+            }
+            if (locationsState.status == LocationsStatus.locationBooked) {
+              showCommonBottomSheet(context, const LocationBookedSheet());
             }
           },
           builder: (context, locationsState) {

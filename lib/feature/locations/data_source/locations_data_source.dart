@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:licenta/core/core.dart';
+import 'package:licenta/feature/locations/entity/entity.dart';
 
 class LocationsRemoteDataSource {
   LocationsRemoteDataSource(FirebaseDatabase database) : _database = database;
@@ -149,5 +150,19 @@ class LocationsRemoteDataSource {
         Map<String, dynamic>.from(snapshot.value as Map<dynamic, dynamic>);
 
     return Location.fromJson(locationData).copyWith(id: locationId);
+  }
+
+  Future<void> bookLocation({
+    required Location location,
+    required int amount,
+    required List<Reservation> reservations,
+  }) async {
+    final locationsRef = databaseReference.child('locations');
+    final userRef = databaseReference.child('users');
+
+    await locationsRef.child(location.id ?? '').child('reservations').set(
+          reservations.map((reservation) => reservation.toJson()).toList(),
+        );
+
   }
 }

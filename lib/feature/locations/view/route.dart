@@ -8,7 +8,9 @@ const locationsRoutes = [
     customRouteBuilder: cupertinoModalBuilder,
     page: AddLocationPage,
   ),
-  AutoRoute<void>(
-    page: LocationDetailsPage,
-  )
+  AutoRoute<void>(page: LocationDetailsPage),
+  CustomRoute<void>(
+    customRouteBuilder: cupertinoModalBuilder,
+    page: PaymentPage,
+  ),
 ];

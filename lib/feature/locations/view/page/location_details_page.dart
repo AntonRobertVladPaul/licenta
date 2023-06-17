@@ -86,6 +86,9 @@ class _LocationDetailsBodyState extends State<_LocationDetailsBody> {
           _fetchLocation();
           context.router.pop();
         }
+        if (state.status == LocationsStatus.bookDatesSaved) {
+          context.router.push(const PaymentRoute());
+        }
       },
       builder: (context, state) {
         return Padding(
@@ -273,7 +276,12 @@ class _LocationDetailsBodyState extends State<_LocationDetailsBody> {
       padding: const EdgeInsets.only(top: 16),
       child: EasyBookingButton(
         text: 'Book location',
-        onPressed: () {},
+        onPressed: () {
+          showCommonBottomSheet(
+            context,
+            BookLocationSheet(location: widget.location),
+          );
+        },
         type: ButtonType.elevated,
         buttonStyleType: ButtonStyleType.dark,
       ),

@@ -10,6 +10,8 @@ enum LocationsStatus {
   locationDeleted,
   imageDeleted,
   locationFetched,
+  bookDatesSaved,
+  locationBooked,
 }
 
 @freezed
@@ -18,5 +20,6 @@ class LocationsState with _$LocationsState {
     @Default(LocationsStatus.initial) LocationsStatus status,
     @Default([]) List<Location> locations,
     Location? location,
+    @Default([]) List<DateTime> bookedDates,
   }) = _LocationsState;
 }

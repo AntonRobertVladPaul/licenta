@@ -20,8 +20,9 @@ Reservation _$ReservationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Reservation {
-  DateTime get startDate => throw _privateConstructorUsedError;
-  DateTime get endDate => throw _privateConstructorUsedError;
+  List<DateTime> get bookedDates => throw _privateConstructorUsedError;
+  bool get isDoorOpen => throw _privateConstructorUsedError;
+  String? get openDoorCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,8 @@ abstract class $ReservationCopyWith<$Res> {
           Reservation value, $Res Function(Reservation) then) =
       _$ReservationCopyWithImpl<$Res, Reservation>;
   @useResult
-  $Res call({DateTime startDate, DateTime endDate});
+  $Res call(
+      {List<DateTime> bookedDates, bool isDoorOpen, String? openDoorCode});
 }
 
 /// @nodoc
@@ -51,18 +53,23 @@ class _$ReservationCopyWithImpl<$Res, $Val extends Reservation>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = null,
-    Object? endDate = null,
+    Object? bookedDates = null,
+    Object? isDoorOpen = null,
+    Object? openDoorCode = freezed,
   }) {
     return _then(_value.copyWith(
-      startDate: null == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endDate: null == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      bookedDates: null == bookedDates
+          ? _value.bookedDates
+          : bookedDates // ignore: cast_nullable_to_non_nullable
+              as List<DateTime>,
+      isDoorOpen: null == isDoorOpen
+          ? _value.isDoorOpen
+          : isDoorOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
+      openDoorCode: freezed == openDoorCode
+          ? _value.openDoorCode
+          : openDoorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -75,7 +82,8 @@ abstract class _$$_ReservationCopyWith<$Res>
       __$$_ReservationCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime startDate, DateTime endDate});
+  $Res call(
+      {List<DateTime> bookedDates, bool isDoorOpen, String? openDoorCode});
 }
 
 /// @nodoc
@@ -89,18 +97,23 @@ class __$$_ReservationCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = null,
-    Object? endDate = null,
+    Object? bookedDates = null,
+    Object? isDoorOpen = null,
+    Object? openDoorCode = freezed,
   }) {
     return _then(_$_Reservation(
-      startDate: null == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endDate: null == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      bookedDates: null == bookedDates
+          ? _value._bookedDates
+          : bookedDates // ignore: cast_nullable_to_non_nullable
+              as List<DateTime>,
+      isDoorOpen: null == isDoorOpen
+          ? _value.isDoorOpen
+          : isDoorOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
+      openDoorCode: freezed == openDoorCode
+          ? _value.openDoorCode
+          : openDoorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -108,19 +121,33 @@ class __$$_ReservationCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Reservation implements _Reservation {
-  const _$_Reservation({required this.startDate, required this.endDate});
+  _$_Reservation(
+      {final List<DateTime> bookedDates = const [],
+      this.isDoorOpen = false,
+      this.openDoorCode})
+      : _bookedDates = bookedDates;
 
   factory _$_Reservation.fromJson(Map<String, dynamic> json) =>
       _$$_ReservationFromJson(json);
 
+  final List<DateTime> _bookedDates;
   @override
-  final DateTime startDate;
+  @JsonKey()
+  List<DateTime> get bookedDates {
+    if (_bookedDates is EqualUnmodifiableListView) return _bookedDates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bookedDates);
+  }
+
   @override
-  final DateTime endDate;
+  @JsonKey()
+  final bool isDoorOpen;
+  @override
+  final String? openDoorCode;
 
   @override
   String toString() {
-    return 'Reservation(startDate: $startDate, endDate: $endDate)';
+    return 'Reservation(bookedDates: $bookedDates, isDoorOpen: $isDoorOpen, openDoorCode: $openDoorCode)';
   }
 
   @override
@@ -128,14 +155,21 @@ class _$_Reservation implements _Reservation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Reservation &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
+            const DeepCollectionEquality()
+                .equals(other._bookedDates, _bookedDates) &&
+            (identical(other.isDoorOpen, isDoorOpen) ||
+                other.isDoorOpen == isDoorOpen) &&
+            (identical(other.openDoorCode, openDoorCode) ||
+                other.openDoorCode == openDoorCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, startDate, endDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_bookedDates),
+      isDoorOpen,
+      openDoorCode);
 
   @JsonKey(ignore: true)
   @override
@@ -152,17 +186,20 @@ class _$_Reservation implements _Reservation {
 }
 
 abstract class _Reservation implements Reservation {
-  const factory _Reservation(
-      {required final DateTime startDate,
-      required final DateTime endDate}) = _$_Reservation;
+  factory _Reservation(
+      {final List<DateTime> bookedDates,
+      final bool isDoorOpen,
+      final String? openDoorCode}) = _$_Reservation;
 
   factory _Reservation.fromJson(Map<String, dynamic> json) =
       _$_Reservation.fromJson;
 
   @override
-  DateTime get startDate;
+  List<DateTime> get bookedDates;
   @override
-  DateTime get endDate;
+  bool get isDoorOpen;
+  @override
+  String? get openDoorCode;
   @override
   @JsonKey(ignore: true)
   _$$_ReservationCopyWith<_$_Reservation> get copyWith =>

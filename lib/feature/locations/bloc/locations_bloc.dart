@@ -1,10 +1,12 @@
 // ignore_for_file: cascade_invocations
 
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:licenta/core/core.dart';
+import 'package:licenta/feature/locations/entity/entity.dart';
 import 'package:licenta/feature/locations/repository/locations_repository.dart';
 
 part 'locations_bloc.freezed.dart';
@@ -23,6 +25,8 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
     on<_LocationDeleted>(_onLocationDeleted);
     on<_ImageDeleted>(_onImageDeleted);
     on<_LocationFetched>(_onLocationFetched);
+    on<_BookDatesSaved>(_onBookDatesSaved);
+    on<_LocationBooked>(_onLocationBooked);
   }
 
   final LocationsRepository _repository;
@@ -158,5 +162,78 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
         ),
       ),
     );
+  }
+
+  Future<void> _onBookDatesSaved(
+    _BookDatesSaved event,
+    Emitter<LocationsState> emit,
+  ) async {
+    emit(state.copyWith(status: LocationsStatus.loading));
+    emit(
+      state.copyWith(
+        status: LocationsStatus.bookDatesSaved,
+        bookedDates: getDatesBetween(
+          event.bookedDates.first,
+          event.bookedDates.last,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _onLocationBooked(
+    _LocationBooked event,
+    Emitter<LocationsState> emit,
+  ) async {
+    if (state.location != null &&
+        event.cvv.length == 3 &&
+        event.cardNumber.length == 19) {
+      emit(state.copyWith(status: LocationsStatus.loading));
+
+      final oldReservations = List<Reservation>.from(
+        state.location?.reservations ?? <Reservation>[],
+      );
+
+      final updatedReservations = [
+        ...oldReservations,
+        Reservation(
+          bookedDates: state.bookedDates,
+          openDoorCode: generateSixDigitCode().toString(),
+        ),
+      ];
+
+      final result = await _repository.bookLocation(
+        location: state.location!,
+        amount: event.amount,
+        reservations: updatedReservations,
+      );
+
+      result.fold(
+        (_) => emit(state.copyWith(status: LocationsStatus.failure)),
+        (_) => emit(state.copyWith(status: LocationsStatus.locationBooked)),
+      );
+    } else {
+      emit(state.copyWith(status: LocationsStatus.failure));
+    }
+  }
+
+  List<DateTime> getDatesBetween(DateTime startDate, DateTime endDate) {
+    final dates = <DateTime>[];
+    var currentDate = startDate;
+
+    while (currentDate.isBefore(endDate) ||
+        currentDate.isAtSameMomentAs(endDate)) {
+      dates.add(currentDate);
+      currentDate = currentDate.add(const Duration(days: 1));
+    }
+
+    return dates;
+  }
+
+  int generateSixDigitCode() {
+    final random = Random();
+    const min = 100000;
+    const max = 999999;
+
+    return min + random.nextInt(max - min + 1);
   }
 }

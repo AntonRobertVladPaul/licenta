@@ -62,6 +62,17 @@ class _LocationInfoFormState extends State<LocationInfoForm> {
       ..addListener(refreshCallback);
   }
 
+  @override
+  void dispose() {
+    _locationNameController.dispose();
+    _locationCapacityController.dispose();
+    _locationAddressLine1Controller.dispose();
+    _locationAddressLine2Controller.dispose();
+    _descriptionController.dispose();
+    _priceController.dispose();
+    super.dispose();
+  }
+
   void refreshCallback() {
     setState(() {});
   }

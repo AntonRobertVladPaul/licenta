@@ -1,14 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'reservation.g.dart';
-
 part 'reservation.freezed.dart';
+
+part 'reservation.g.dart';
 
 @freezed
 class Reservation with _$Reservation {
-  const factory Reservation({
-    required DateTime startDate,
-    required DateTime endDate,
+  factory Reservation({
+    @Default([]) List<DateTime> bookedDates,
+    @Default(false) bool isDoorOpen,
+    String? openDoorCode,
   }) = _Reservation;
 
   factory Reservation.fromJson(Map<String, dynamic> json) =>

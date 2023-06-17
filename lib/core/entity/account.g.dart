@@ -11,6 +11,7 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       lastName: json['lastName'] as String,
       email: json['email'] as String,
       password: json['password'] as String,
+      amount: json['amount'] as int? ?? 0,
       accountType: $enumDecode(_$AccountTypeEnumMap, json['accountType']),
     );
 
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
       'lastName': instance.lastName,
       'email': instance.email,
       'password': instance.password,
+      'amount': instance.amount,
       'accountType': _$AccountTypeEnumMap[instance.accountType]!,
     };
 
@@ -27,33 +29,3 @@ const _$AccountTypeEnumMap = {
   AccountType.client: 'client',
   AccountType.owner: 'owner',
 };
-
-_$_Location _$$_LocationFromJson(Map<String, dynamic> json) => _$_Location(
-      id: json['id'] as String?,
-      ownerEmail: json['ownerEmail'] as String,
-      name: json['name'] as String,
-      capacity: json['capacity'] as int,
-      addressLine1: json['addressLine1'] as String,
-      addressLine2: json['addressLine2'] as String?,
-      description: json['description'] as String?,
-      price: json['price'] as int,
-      images:
-          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      reservation: json['reservation'] == null
-          ? null
-          : Reservation.fromJson(json['reservation'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_LocationToJson(_$_Location instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'ownerEmail': instance.ownerEmail,
-      'name': instance.name,
-      'capacity': instance.capacity,
-      'addressLine1': instance.addressLine1,
-      'addressLine2': instance.addressLine2,
-      'description': instance.description,
-      'price': instance.price,
-      'images': instance.images,
-      'reservation': instance.reservation,
-    };
