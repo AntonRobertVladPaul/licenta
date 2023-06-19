@@ -27,9 +27,12 @@ mixin _$LocationsEvent {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,9 +44,12 @@ mixin _$LocationsEvent {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,9 +61,12 @@ mixin _$LocationsEvent {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +80,7 @@ mixin _$LocationsEvent {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +93,7 @@ mixin _$LocationsEvent {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -95,6 +106,7 @@ mixin _$LocationsEvent {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -218,9 +230,12 @@ class _$_LocationCreated implements _LocationCreated {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
     return locationCreated(location, images);
   }
@@ -235,9 +250,12 @@ class _$_LocationCreated implements _LocationCreated {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
     return locationCreated?.call(location, images);
   }
@@ -252,9 +270,12 @@ class _$_LocationCreated implements _LocationCreated {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationCreated != null) {
@@ -274,6 +295,7 @@ class _$_LocationCreated implements _LocationCreated {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return locationCreated(this);
   }
@@ -289,6 +311,7 @@ class _$_LocationCreated implements _LocationCreated {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return locationCreated?.call(this);
   }
@@ -304,6 +327,7 @@ class _$_LocationCreated implements _LocationCreated {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationCreated != null) {
@@ -398,9 +422,12 @@ class _$_LocationsFetched implements _LocationsFetched {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
     return locationsFetched(email);
   }
@@ -415,9 +442,12 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
     return locationsFetched?.call(email);
   }
@@ -432,9 +462,12 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationsFetched != null) {
@@ -454,6 +487,7 @@ class _$_LocationsFetched implements _LocationsFetched {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return locationsFetched(this);
   }
@@ -469,6 +503,7 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return locationsFetched?.call(this);
   }
@@ -484,6 +519,7 @@ class _$_LocationsFetched implements _LocationsFetched {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationsFetched != null) {
@@ -602,9 +638,12 @@ class _$_LocationUpdated implements _LocationUpdated {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
     return locationUpdated(location, images);
   }
@@ -619,9 +658,12 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
     return locationUpdated?.call(location, images);
   }
@@ -636,9 +678,12 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationUpdated != null) {
@@ -658,6 +703,7 @@ class _$_LocationUpdated implements _LocationUpdated {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return locationUpdated(this);
   }
@@ -673,6 +719,7 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return locationUpdated?.call(this);
   }
@@ -688,6 +735,7 @@ class _$_LocationUpdated implements _LocationUpdated {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationUpdated != null) {
@@ -783,9 +831,12 @@ class _$_LocationDeleted implements _LocationDeleted {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
     return locationDeleted(locationId);
   }
@@ -800,9 +851,12 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
     return locationDeleted?.call(locationId);
   }
@@ -817,9 +871,12 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationDeleted != null) {
@@ -839,6 +896,7 @@ class _$_LocationDeleted implements _LocationDeleted {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return locationDeleted(this);
   }
@@ -854,6 +912,7 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return locationDeleted?.call(this);
   }
@@ -869,6 +928,7 @@ class _$_LocationDeleted implements _LocationDeleted {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationDeleted != null) {
@@ -971,9 +1031,12 @@ class _$_ImageDeleted implements _ImageDeleted {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
     return imageDeleted(locationId, imageUrl);
   }
@@ -988,9 +1051,12 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
     return imageDeleted?.call(locationId, imageUrl);
   }
@@ -1005,9 +1071,12 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (imageDeleted != null) {
@@ -1027,6 +1096,7 @@ class _$_ImageDeleted implements _ImageDeleted {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return imageDeleted(this);
   }
@@ -1042,6 +1112,7 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return imageDeleted?.call(this);
   }
@@ -1057,6 +1128,7 @@ class _$_ImageDeleted implements _ImageDeleted {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (imageDeleted != null) {
@@ -1152,9 +1224,12 @@ class _$_LocationFetched implements _LocationFetched {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
     return locationFetched(locationId);
   }
@@ -1169,9 +1244,12 @@ class _$_LocationFetched implements _LocationFetched {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
     return locationFetched?.call(locationId);
   }
@@ -1186,9 +1264,12 @@ class _$_LocationFetched implements _LocationFetched {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationFetched != null) {
@@ -1208,6 +1289,7 @@ class _$_LocationFetched implements _LocationFetched {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return locationFetched(this);
   }
@@ -1223,6 +1305,7 @@ class _$_LocationFetched implements _LocationFetched {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return locationFetched?.call(this);
   }
@@ -1238,6 +1321,7 @@ class _$_LocationFetched implements _LocationFetched {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationFetched != null) {
@@ -1338,9 +1422,12 @@ class _$_BookDatesSaved implements _BookDatesSaved {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
     return bookDatesSaved(bookedDates);
   }
@@ -1355,9 +1442,12 @@ class _$_BookDatesSaved implements _BookDatesSaved {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
     return bookDatesSaved?.call(bookedDates);
   }
@@ -1372,9 +1462,12 @@ class _$_BookDatesSaved implements _BookDatesSaved {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (bookDatesSaved != null) {
@@ -1394,6 +1487,7 @@ class _$_BookDatesSaved implements _BookDatesSaved {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return bookDatesSaved(this);
   }
@@ -1409,6 +1503,7 @@ class _$_BookDatesSaved implements _BookDatesSaved {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return bookDatesSaved?.call(this);
   }
@@ -1424,6 +1519,7 @@ class _$_BookDatesSaved implements _BookDatesSaved {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (bookDatesSaved != null) {
@@ -1449,7 +1545,12 @@ abstract class _$$_LocationBookedCopyWith<$Res> {
           _$_LocationBooked value, $Res Function(_$_LocationBooked) then) =
       __$$_LocationBookedCopyWithImpl<$Res>;
   @useResult
-  $Res call({int amount, String cardNumber, String cvv, String expiryDate});
+  $Res call(
+      {int amount,
+      String cardNumber,
+      String cvv,
+      String expiryDate,
+      String clientEmail});
 }
 
 /// @nodoc
@@ -1467,6 +1568,7 @@ class __$$_LocationBookedCopyWithImpl<$Res>
     Object? cardNumber = null,
     Object? cvv = null,
     Object? expiryDate = null,
+    Object? clientEmail = null,
   }) {
     return _then(_$_LocationBooked(
       amount: null == amount
@@ -1485,6 +1587,10 @@ class __$$_LocationBookedCopyWithImpl<$Res>
           ? _value.expiryDate
           : expiryDate // ignore: cast_nullable_to_non_nullable
               as String,
+      clientEmail: null == clientEmail
+          ? _value.clientEmail
+          : clientEmail // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1496,7 +1602,8 @@ class _$_LocationBooked implements _LocationBooked {
       {required this.amount,
       required this.cardNumber,
       required this.cvv,
-      required this.expiryDate});
+      required this.expiryDate,
+      required this.clientEmail});
 
   @override
   final int amount;
@@ -1506,10 +1613,12 @@ class _$_LocationBooked implements _LocationBooked {
   final String cvv;
   @override
   final String expiryDate;
+  @override
+  final String clientEmail;
 
   @override
   String toString() {
-    return 'LocationsEvent.locationBooked(amount: $amount, cardNumber: $cardNumber, cvv: $cvv, expiryDate: $expiryDate)';
+    return 'LocationsEvent.locationBooked(amount: $amount, cardNumber: $cardNumber, cvv: $cvv, expiryDate: $expiryDate, clientEmail: $clientEmail)';
   }
 
   @override
@@ -1522,12 +1631,14 @@ class _$_LocationBooked implements _LocationBooked {
                 other.cardNumber == cardNumber) &&
             (identical(other.cvv, cvv) || other.cvv == cvv) &&
             (identical(other.expiryDate, expiryDate) ||
-                other.expiryDate == expiryDate));
+                other.expiryDate == expiryDate) &&
+            (identical(other.clientEmail, clientEmail) ||
+                other.clientEmail == clientEmail));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, amount, cardNumber, cvv, expiryDate);
+  int get hashCode => Object.hash(
+      runtimeType, amount, cardNumber, cvv, expiryDate, clientEmail);
 
   @JsonKey(ignore: true)
   @override
@@ -1547,11 +1658,14 @@ class _$_LocationBooked implements _LocationBooked {
     required TResult Function(String locationId, String imageUrl) imageDeleted,
     required TResult Function(String locationId) locationFetched,
     required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
-    required TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
         locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
   }) {
-    return locationBooked(amount, cardNumber, cvv, expiryDate);
+    return locationBooked(amount, cardNumber, cvv, expiryDate, clientEmail);
   }
 
   @override
@@ -1564,11 +1678,15 @@ class _$_LocationBooked implements _LocationBooked {
     TResult? Function(String locationId, String imageUrl)? imageDeleted,
     TResult? Function(String locationId)? locationFetched,
     TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult? Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
   }) {
-    return locationBooked?.call(amount, cardNumber, cvv, expiryDate);
+    return locationBooked?.call(
+        amount, cardNumber, cvv, expiryDate, clientEmail);
   }
 
   @override
@@ -1581,13 +1699,16 @@ class _$_LocationBooked implements _LocationBooked {
     TResult Function(String locationId, String imageUrl)? imageDeleted,
     TResult Function(String locationId)? locationFetched,
     TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
-    TResult Function(
-            int amount, String cardNumber, String cvv, String expiryDate)?
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
         locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationBooked != null) {
-      return locationBooked(amount, cardNumber, cvv, expiryDate);
+      return locationBooked(amount, cardNumber, cvv, expiryDate, clientEmail);
     }
     return orElse();
   }
@@ -1603,6 +1724,7 @@ class _$_LocationBooked implements _LocationBooked {
     required TResult Function(_LocationFetched value) locationFetched,
     required TResult Function(_BookDatesSaved value) bookDatesSaved,
     required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
   }) {
     return locationBooked(this);
   }
@@ -1618,6 +1740,7 @@ class _$_LocationBooked implements _LocationBooked {
     TResult? Function(_LocationFetched value)? locationFetched,
     TResult? Function(_BookDatesSaved value)? bookDatesSaved,
     TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
   }) {
     return locationBooked?.call(this);
   }
@@ -1633,6 +1756,7 @@ class _$_LocationBooked implements _LocationBooked {
     TResult Function(_LocationFetched value)? locationFetched,
     TResult Function(_BookDatesSaved value)? bookDatesSaved,
     TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
     required TResult orElse(),
   }) {
     if (locationBooked != null) {
@@ -1647,14 +1771,234 @@ abstract class _LocationBooked implements LocationsEvent {
       {required final int amount,
       required final String cardNumber,
       required final String cvv,
-      required final String expiryDate}) = _$_LocationBooked;
+      required final String expiryDate,
+      required final String clientEmail}) = _$_LocationBooked;
 
   int get amount;
   String get cardNumber;
   String get cvv;
   String get expiryDate;
+  String get clientEmail;
   @JsonKey(ignore: true)
   _$$_LocationBookedCopyWith<_$_LocationBooked> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DoorStatusChangedCopyWith<$Res> {
+  factory _$$_DoorStatusChangedCopyWith(_$_DoorStatusChanged value,
+          $Res Function(_$_DoorStatusChanged) then) =
+      __$$_DoorStatusChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String locationName, String openDoorCode, bool newDoorStatus});
+}
+
+/// @nodoc
+class __$$_DoorStatusChangedCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res, _$_DoorStatusChanged>
+    implements _$$_DoorStatusChangedCopyWith<$Res> {
+  __$$_DoorStatusChangedCopyWithImpl(
+      _$_DoorStatusChanged _value, $Res Function(_$_DoorStatusChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? locationName = null,
+    Object? openDoorCode = null,
+    Object? newDoorStatus = null,
+  }) {
+    return _then(_$_DoorStatusChanged(
+      locationName: null == locationName
+          ? _value.locationName
+          : locationName // ignore: cast_nullable_to_non_nullable
+              as String,
+      openDoorCode: null == openDoorCode
+          ? _value.openDoorCode
+          : openDoorCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      newDoorStatus: null == newDoorStatus
+          ? _value.newDoorStatus
+          : newDoorStatus // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DoorStatusChanged implements _DoorStatusChanged {
+  const _$_DoorStatusChanged(
+      {required this.locationName,
+      required this.openDoorCode,
+      required this.newDoorStatus});
+
+  @override
+  final String locationName;
+  @override
+  final String openDoorCode;
+  @override
+  final bool newDoorStatus;
+
+  @override
+  String toString() {
+    return 'LocationsEvent.doorStatusChanged(locationName: $locationName, openDoorCode: $openDoorCode, newDoorStatus: $newDoorStatus)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DoorStatusChanged &&
+            (identical(other.locationName, locationName) ||
+                other.locationName == locationName) &&
+            (identical(other.openDoorCode, openDoorCode) ||
+                other.openDoorCode == openDoorCode) &&
+            (identical(other.newDoorStatus, newDoorStatus) ||
+                other.newDoorStatus == newDoorStatus));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, locationName, openDoorCode, newDoorStatus);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DoorStatusChangedCopyWith<_$_DoorStatusChanged> get copyWith =>
+      __$$_DoorStatusChangedCopyWithImpl<_$_DoorStatusChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Location location, List<File> images)
+        locationCreated,
+    required TResult Function(String? email) locationsFetched,
+    required TResult Function(Location location, List<File> images)
+        locationUpdated,
+    required TResult Function(String locationId) locationDeleted,
+    required TResult Function(String locationId, String imageUrl) imageDeleted,
+    required TResult Function(String locationId) locationFetched,
+    required TResult Function(List<DateTime> bookedDates) bookDatesSaved,
+    required TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)
+        locationBooked,
+    required TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)
+        doorStatusChanged,
+  }) {
+    return doorStatusChanged(locationName, openDoorCode, newDoorStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Location location, List<File> images)? locationCreated,
+    TResult? Function(String? email)? locationsFetched,
+    TResult? Function(Location location, List<File> images)? locationUpdated,
+    TResult? Function(String locationId)? locationDeleted,
+    TResult? Function(String locationId, String imageUrl)? imageDeleted,
+    TResult? Function(String locationId)? locationFetched,
+    TResult? Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult? Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
+        locationBooked,
+    TResult? Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
+  }) {
+    return doorStatusChanged?.call(locationName, openDoorCode, newDoorStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Location location, List<File> images)? locationCreated,
+    TResult Function(String? email)? locationsFetched,
+    TResult Function(Location location, List<File> images)? locationUpdated,
+    TResult Function(String locationId)? locationDeleted,
+    TResult Function(String locationId, String imageUrl)? imageDeleted,
+    TResult Function(String locationId)? locationFetched,
+    TResult Function(List<DateTime> bookedDates)? bookDatesSaved,
+    TResult Function(int amount, String cardNumber, String cvv,
+            String expiryDate, String clientEmail)?
+        locationBooked,
+    TResult Function(
+            String locationName, String openDoorCode, bool newDoorStatus)?
+        doorStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (doorStatusChanged != null) {
+      return doorStatusChanged(locationName, openDoorCode, newDoorStatus);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocationCreated value) locationCreated,
+    required TResult Function(_LocationsFetched value) locationsFetched,
+    required TResult Function(_LocationUpdated value) locationUpdated,
+    required TResult Function(_LocationDeleted value) locationDeleted,
+    required TResult Function(_ImageDeleted value) imageDeleted,
+    required TResult Function(_LocationFetched value) locationFetched,
+    required TResult Function(_BookDatesSaved value) bookDatesSaved,
+    required TResult Function(_LocationBooked value) locationBooked,
+    required TResult Function(_DoorStatusChanged value) doorStatusChanged,
+  }) {
+    return doorStatusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocationCreated value)? locationCreated,
+    TResult? Function(_LocationsFetched value)? locationsFetched,
+    TResult? Function(_LocationUpdated value)? locationUpdated,
+    TResult? Function(_LocationDeleted value)? locationDeleted,
+    TResult? Function(_ImageDeleted value)? imageDeleted,
+    TResult? Function(_LocationFetched value)? locationFetched,
+    TResult? Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult? Function(_LocationBooked value)? locationBooked,
+    TResult? Function(_DoorStatusChanged value)? doorStatusChanged,
+  }) {
+    return doorStatusChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocationCreated value)? locationCreated,
+    TResult Function(_LocationsFetched value)? locationsFetched,
+    TResult Function(_LocationUpdated value)? locationUpdated,
+    TResult Function(_LocationDeleted value)? locationDeleted,
+    TResult Function(_ImageDeleted value)? imageDeleted,
+    TResult Function(_LocationFetched value)? locationFetched,
+    TResult Function(_BookDatesSaved value)? bookDatesSaved,
+    TResult Function(_LocationBooked value)? locationBooked,
+    TResult Function(_DoorStatusChanged value)? doorStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (doorStatusChanged != null) {
+      return doorStatusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DoorStatusChanged implements LocationsEvent {
+  const factory _DoorStatusChanged(
+      {required final String locationName,
+      required final String openDoorCode,
+      required final bool newDoorStatus}) = _$_DoorStatusChanged;
+
+  String get locationName;
+  String get openDoorCode;
+  bool get newDoorStatus;
+  @JsonKey(ignore: true)
+  _$$_DoorStatusChangedCopyWith<_$_DoorStatusChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

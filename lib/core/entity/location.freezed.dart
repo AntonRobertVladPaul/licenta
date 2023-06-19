@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Location _$LocationFromJson(Map<String, dynamic> json) {
-  return _Location.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Location {
   String? get id => throw _privateConstructorUsedError;
@@ -212,7 +208,7 @@ class __$$_LocationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 @JsonKey(includeIfNull: false)
 class _$_Location extends _Location {
   _$_Location(
@@ -229,9 +225,6 @@ class _$_Location extends _Location {
       : _images = images,
         _reservations = reservations,
         super._();
-
-  factory _$_Location.fromJson(Map<String, dynamic> json) =>
-      _$$_LocationFromJson(json);
 
   @override
   final String? id;
@@ -338,8 +331,6 @@ abstract class _Location extends Location {
       final List<String>? images,
       final List<Reservation> reservations}) = _$_Location;
   _Location._() : super._();
-
-  factory _Location.fromJson(Map<String, dynamic> json) = _$_Location.fromJson;
 
   @override
   String? get id;

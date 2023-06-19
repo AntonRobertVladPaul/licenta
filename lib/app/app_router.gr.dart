@@ -53,6 +53,18 @@ class _$AppRouter extends RootStackRouter {
         child: const MainPage(),
       );
     },
+    BookedLocationsRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const BookedLocationsPage(),
+      );
+    },
+    WalletRoute.name: (routeData) {
+      return MaterialPageX<void>(
+        routeData: routeData,
+        child: const WalletPage(),
+      );
+    },
     AddLocationRoute.name: (routeData) {
       final args = routeData.argsAs<AddLocationRouteArgs>(
           orElse: () => const AddLocationRouteArgs());
@@ -141,6 +153,16 @@ class _$AppRouter extends RootStackRouter {
                   parent: MainRoute.name,
                 ),
               ],
+            ),
+            RouteConfig(
+              BookedLocationsRoute.name,
+              path: 'booked-locations-page',
+              parent: MainRouterRoute.name,
+            ),
+            RouteConfig(
+              WalletRoute.name,
+              path: 'wallet-page',
+              parent: MainRouterRoute.name,
             ),
             RouteConfig(
               AddLocationRoute.name,
@@ -259,6 +281,30 @@ class MainRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainRoute';
+}
+
+/// generated route for
+/// [BookedLocationsPage]
+class BookedLocationsRoute extends PageRouteInfo<void> {
+  const BookedLocationsRoute()
+      : super(
+          BookedLocationsRoute.name,
+          path: 'booked-locations-page',
+        );
+
+  static const String name = 'BookedLocationsRoute';
+}
+
+/// generated route for
+/// [WalletPage]
+class WalletRoute extends PageRouteInfo<void> {
+  const WalletRoute()
+      : super(
+          WalletRoute.name,
+          path: 'wallet-page',
+        );
+
+  static const String name = 'WalletRoute';
 }
 
 /// generated route for

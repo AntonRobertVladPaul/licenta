@@ -70,14 +70,38 @@ class LocationsRepository {
 
   Future<Either<Failure, void>> bookLocation({
     required Location location,
-    required int amount,
     required List<Reservation> reservations,
   }) async {
     return DataSourceHandler.execute(
       () => _remoteDataSource.bookLocation(
         location: location,
-        amount: amount,
         reservations: reservations,
+      ),
+    );
+  }
+
+  Future<Either<Failure, void>> updateAmount({
+    required Location location,
+    required int amount,
+  }) async {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.updateAmount(
+        location: location,
+        amount: amount,
+      ),
+    );
+  }
+
+  Future<Either<Failure, void>> changeDoorStatus({
+    required String locationName,
+    required String openDoorCode,
+    required bool newDoorStatus,
+  }) async {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.updateDoorStatus(
+        locationName: locationName,
+        openDoorCode: openDoorCode,
+        newDoorStatus: newDoorStatus,
       ),
     );
   }

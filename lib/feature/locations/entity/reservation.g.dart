@@ -13,6 +13,8 @@ _$_Reservation _$$_ReservationFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       isDoorOpen: json['isDoorOpen'] as bool? ?? false,
+      clientEmail: json['clientEmail'] as String,
+      locationName: json['locationName'] as String,
       openDoorCode: json['openDoorCode'] as String?,
     );
 
@@ -21,5 +23,7 @@ Map<String, dynamic> _$$_ReservationToJson(_$_Reservation instance) =>
       'bookedDates':
           instance.bookedDates.map((e) => e.toIso8601String()).toList(),
       'isDoorOpen': instance.isDoorOpen,
+      'clientEmail': instance.clientEmail,
+      'locationName': instance.locationName,
       'openDoorCode': instance.openDoorCode,
     };

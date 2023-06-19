@@ -15,4 +15,13 @@ class MainRepository {
       () => _remoteDataSource.getAccount(email),
     );
   }
+
+  Future<Either<Failure, void>> withdrawMoney({
+    required String iban,
+    required String email,
+  }) {
+    return DataSourceHandler.execute(
+      () => _remoteDataSource.withdrawMoney(iban: iban, email: email),
+    );
+  }
 }

@@ -154,15 +154,79 @@ class LocationsRemoteDataSource {
 
   Future<void> bookLocation({
     required Location location,
-    required int amount,
     required List<Reservation> reservations,
   }) async {
     final locationsRef = databaseReference.child('locations');
-    final userRef = databaseReference.child('users');
 
     await locationsRef.child(location.id ?? '').child('reservations').set(
           reservations.map((reservation) => reservation.toJson()).toList(),
         );
+  }
 
+  Future<void> updateAmount({
+    required Location location,
+    required int amount,
+  }) async {
+    final userRef = databaseReference.child('users');
+
+    final snapshot = await userRef.once().then((event) => event.snapshot);
+    final users = snapshot.value as Map<dynamic, dynamic>?;
+
+    if (users != null) {
+      for (final userKey in users.keys) {
+        final user = users[userKey];
+        if (user['email'] == location.ownerEmail) {
+          final finalAmount = (user['amount'] as int) + amount;
+          final userToUpdateRef = userRef.child(userKey as String);
+          await userToUpdateRef.update({'amount': finalAmount});
+          break;
+        }
+      }
+    }
+  }
+
+  Future<void> updateDoorStatus({
+    required String locationName,
+    required String openDoorCode,
+    required bool newDoorStatus,
+  }) async {
+    final locationsRef = databaseReference.child('locations');
+
+    final snapshot = await locationsRef.once().then((event) => event.snapshot);
+
+    final locations = snapshot.value as Map<dynamic, dynamic>?;
+
+    if (locations != null) {
+      var locationId = '';
+
+      for (final entry in locations.entries) {
+        final location = entry.value as Map<dynamic, dynamic>;
+
+        if (location['name'] == locationName) {
+          locationId = entry.key as String;
+          break;
+        }
+      }
+
+      if (locationId.isNotEmpty) {
+        final reservations =
+            locations[locationId]['reservations'] as List<dynamic>?;
+
+        if (reservations != null) {
+          for (final reservation in reservations) {
+            final reservationMap = reservation as Map<dynamic, dynamic>;
+
+            if (reservationMap['openDoorCode'] == openDoorCode) {
+              reservationMap['isDoorOpen'] = newDoorStatus;
+            }
+          }
+
+          await locationsRef
+              .child(locationId)
+              .child('reservations')
+              .set(reservations);
+        }
+      }
+    }
   }
 }

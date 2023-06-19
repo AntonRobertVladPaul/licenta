@@ -12,6 +12,9 @@ enum LocationsStatus {
   locationFetched,
   bookDatesSaved,
   locationBooked,
+  doorOpened,
+  doorClosed,
+  doorLoading,
 }
 
 @freezed

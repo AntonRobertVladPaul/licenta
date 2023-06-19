@@ -19,32 +19,38 @@ mixin _$MainEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() accountFetched,
+    required TResult Function(String iban) moneyWithdrawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? accountFetched,
+    TResult? Function(String iban)? moneyWithdrawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? accountFetched,
+    TResult Function(String iban)? moneyWithdrawn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AccountFetched value) accountFetched,
+    required TResult Function(_MoneyWithdrawn value) moneyWithdrawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AccountFetched value)? accountFetched,
+    TResult? Function(_MoneyWithdrawn value)? moneyWithdrawn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AccountFetched value)? accountFetched,
+    TResult Function(_MoneyWithdrawn value)? moneyWithdrawn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$_AccountFetched implements _AccountFetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() accountFetched,
+    required TResult Function(String iban) moneyWithdrawn,
   }) {
     return accountFetched();
   }
@@ -114,6 +121,7 @@ class _$_AccountFetched implements _AccountFetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? accountFetched,
+    TResult? Function(String iban)? moneyWithdrawn,
   }) {
     return accountFetched?.call();
   }
@@ -122,6 +130,7 @@ class _$_AccountFetched implements _AccountFetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? accountFetched,
+    TResult Function(String iban)? moneyWithdrawn,
     required TResult orElse(),
   }) {
     if (accountFetched != null) {
@@ -134,6 +143,7 @@ class _$_AccountFetched implements _AccountFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AccountFetched value) accountFetched,
+    required TResult Function(_MoneyWithdrawn value) moneyWithdrawn,
   }) {
     return accountFetched(this);
   }
@@ -142,6 +152,7 @@ class _$_AccountFetched implements _AccountFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AccountFetched value)? accountFetched,
+    TResult? Function(_MoneyWithdrawn value)? moneyWithdrawn,
   }) {
     return accountFetched?.call(this);
   }
@@ -150,6 +161,7 @@ class _$_AccountFetched implements _AccountFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AccountFetched value)? accountFetched,
+    TResult Function(_MoneyWithdrawn value)? moneyWithdrawn,
     required TResult orElse(),
   }) {
     if (accountFetched != null) {
@@ -161,6 +173,140 @@ class _$_AccountFetched implements _AccountFetched {
 
 abstract class _AccountFetched implements MainEvent {
   const factory _AccountFetched() = _$_AccountFetched;
+}
+
+/// @nodoc
+abstract class _$$_MoneyWithdrawnCopyWith<$Res> {
+  factory _$$_MoneyWithdrawnCopyWith(
+          _$_MoneyWithdrawn value, $Res Function(_$_MoneyWithdrawn) then) =
+      __$$_MoneyWithdrawnCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String iban});
+}
+
+/// @nodoc
+class __$$_MoneyWithdrawnCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$_MoneyWithdrawn>
+    implements _$$_MoneyWithdrawnCopyWith<$Res> {
+  __$$_MoneyWithdrawnCopyWithImpl(
+      _$_MoneyWithdrawn _value, $Res Function(_$_MoneyWithdrawn) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? iban = null,
+  }) {
+    return _then(_$_MoneyWithdrawn(
+      iban: null == iban
+          ? _value.iban
+          : iban // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MoneyWithdrawn implements _MoneyWithdrawn {
+  const _$_MoneyWithdrawn({required this.iban});
+
+  @override
+  final String iban;
+
+  @override
+  String toString() {
+    return 'MainEvent.moneyWithdrawn(iban: $iban)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MoneyWithdrawn &&
+            (identical(other.iban, iban) || other.iban == iban));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, iban);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MoneyWithdrawnCopyWith<_$_MoneyWithdrawn> get copyWith =>
+      __$$_MoneyWithdrawnCopyWithImpl<_$_MoneyWithdrawn>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() accountFetched,
+    required TResult Function(String iban) moneyWithdrawn,
+  }) {
+    return moneyWithdrawn(iban);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? accountFetched,
+    TResult? Function(String iban)? moneyWithdrawn,
+  }) {
+    return moneyWithdrawn?.call(iban);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? accountFetched,
+    TResult Function(String iban)? moneyWithdrawn,
+    required TResult orElse(),
+  }) {
+    if (moneyWithdrawn != null) {
+      return moneyWithdrawn(iban);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AccountFetched value) accountFetched,
+    required TResult Function(_MoneyWithdrawn value) moneyWithdrawn,
+  }) {
+    return moneyWithdrawn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AccountFetched value)? accountFetched,
+    TResult? Function(_MoneyWithdrawn value)? moneyWithdrawn,
+  }) {
+    return moneyWithdrawn?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AccountFetched value)? accountFetched,
+    TResult Function(_MoneyWithdrawn value)? moneyWithdrawn,
+    required TResult orElse(),
+  }) {
+    if (moneyWithdrawn != null) {
+      return moneyWithdrawn(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MoneyWithdrawn implements MainEvent {
+  const factory _MoneyWithdrawn({required final String iban}) =
+      _$_MoneyWithdrawn;
+
+  String get iban;
+  @JsonKey(ignore: true)
+  _$$_MoneyWithdrawnCopyWith<_$_MoneyWithdrawn> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

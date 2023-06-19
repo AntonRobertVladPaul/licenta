@@ -172,18 +172,19 @@ class _PaymentBodyState extends State<_PaymentBody> {
         final price =
             (state.location?.price ?? 1) * (state.bookedDates.length - 1);
 
-        final ownerAmount = context.read<MainBloc>().state.account?.amount ?? 0;
-        final newAmount = ownerAmount + price;
+        final amount = price;
         return EasyBookingButton(
           text: 'Pay $price RON',
           isLoading: state.status == LocationsStatus.loading,
           onPressed: () {
             context.read<LocationsBloc>().add(
                   LocationsEvent.locationBooked(
-                    amount: newAmount,
+                    amount: amount,
                     cardNumber: cardNumberController.text,
                     cvv: cvvController.text,
                     expiryDate: expirationDateController.text,
+                    clientEmail:
+                        context.read<MainBloc>().state.account!.email,
                   ),
                 );
           },

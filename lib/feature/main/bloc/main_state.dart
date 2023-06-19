@@ -5,6 +5,7 @@ enum MainStatus {
   loading,
   failure,
   accountFetched,
+  moneyWithdrawn,
 }
 
 @freezed

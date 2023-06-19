@@ -9,6 +9,8 @@ class Reservation with _$Reservation {
   factory Reservation({
     @Default([]) List<DateTime> bookedDates,
     @Default(false) bool isDoorOpen,
+    required String clientEmail,
+    required String locationName,
     String? openDoorCode,
   }) = _Reservation;
 

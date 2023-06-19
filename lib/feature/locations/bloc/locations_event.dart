@@ -38,5 +38,12 @@ class LocationsEvent with _$LocationsEvent {
     required String cardNumber,
     required String cvv,
     required String expiryDate,
+    required String clientEmail,
   }) = _LocationBooked;
+
+  const factory LocationsEvent.doorStatusChanged({
+    required String locationName,
+    required String openDoorCode,
+    required bool newDoorStatus,
+  }) = _DoorStatusChanged;
 }

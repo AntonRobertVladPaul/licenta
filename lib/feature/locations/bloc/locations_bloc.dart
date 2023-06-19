@@ -27,6 +27,7 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
     on<_LocationFetched>(_onLocationFetched);
     on<_BookDatesSaved>(_onBookDatesSaved);
     on<_LocationBooked>(_onLocationBooked);
+    on<_DoorStatusChanged>(_onDoorStatusChanged);
   }
 
   final LocationsRepository _repository;
@@ -198,22 +199,57 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
         Reservation(
           bookedDates: state.bookedDates,
           openDoorCode: generateSixDigitCode().toString(),
+          clientEmail: event.clientEmail,
+          locationName: state.location!.name,
         ),
       ];
 
       final result = await _repository.bookLocation(
         location: state.location!,
-        amount: event.amount,
         reservations: updatedReservations,
       );
 
-      result.fold(
-        (_) => emit(state.copyWith(status: LocationsStatus.failure)),
-        (_) => emit(state.copyWith(status: LocationsStatus.locationBooked)),
+      await result.fold(
+        (_) async => emit(state.copyWith(status: LocationsStatus.failure)),
+        (_) async {
+          final updateAmountResult = await _repository.updateAmount(
+            location: state.location!,
+            amount: event.amount,
+          );
+
+          updateAmountResult.fold(
+            (_) => emit(state.copyWith(status: LocationsStatus.failure)),
+            (_) => emit(state.copyWith(status: LocationsStatus.locationBooked)),
+          );
+        },
       );
     } else {
       emit(state.copyWith(status: LocationsStatus.failure));
     }
+  }
+
+  Future<void> _onDoorStatusChanged(
+    _DoorStatusChanged event,
+    Emitter<LocationsState> emit,
+  ) async {
+    emit(state.copyWith(status: LocationsStatus.doorLoading));
+
+    final result = await _repository.changeDoorStatus(
+      locationName: event.locationName,
+      openDoorCode: event.openDoorCode,
+      newDoorStatus: event.newDoorStatus,
+    );
+
+    result.fold(
+      (_) => emit(state.copyWith(status: LocationsStatus.failure)),
+      (location) {
+        if (event.newDoorStatus == true) {
+          emit(state.copyWith(status: LocationsStatus.doorOpened));
+        } else {
+          emit(state.copyWith(status: LocationsStatus.doorClosed));
+        }
+      },
+    );
   }
 
   List<DateTime> getDatesBetween(DateTime startDate, DateTime endDate) {

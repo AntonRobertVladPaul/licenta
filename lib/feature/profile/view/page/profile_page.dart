@@ -104,10 +104,10 @@ class _ProfileBodyState extends State<_ProfileBody> {
                 onTap: () {
                   switch (item) {
                     case ProfileItem.wallet:
-                      print('Hatz');
+                      context.pushRoute(const WalletRoute());
                       break;
                     case ProfileItem.bookedLocations:
-                      print('Hatz');
+                      context.pushRoute(const BookedLocationsRoute());
                       break;
                     case ProfileItem.logout:
                       const secureStorage = FlutterSecureStorage();

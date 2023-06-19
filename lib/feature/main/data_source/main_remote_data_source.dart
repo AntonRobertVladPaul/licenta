@@ -28,4 +28,30 @@ class MainRemoteDataSource {
       return null;
     }
   }
+
+  Future<void> withdrawMoney({
+    required String iban,
+    required String email,
+  }) async {
+    if (iban.isNotEmpty) {
+      final userRef = _database.ref().child('users');
+
+      final snapshot = await userRef.once().then((event) => event.snapshot);
+      final users = snapshot.value as Map<dynamic, dynamic>?;
+
+      if (users != null) {
+        for (final userKey in users.keys) {
+          final user = users[userKey];
+          if (user['email'] == email) {
+            const finalAmount = 0;
+            final userToUpdateRef = userRef.child(userKey as String);
+            await userToUpdateRef.update({'amount': finalAmount});
+            break;
+          }
+        }
+      }
+    } else {
+      throw Exception('Iban is empty');
+    }
+  }
 }

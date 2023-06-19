@@ -22,6 +22,8 @@ Reservation _$ReservationFromJson(Map<String, dynamic> json) {
 mixin _$Reservation {
   List<DateTime> get bookedDates => throw _privateConstructorUsedError;
   bool get isDoorOpen => throw _privateConstructorUsedError;
+  String get clientEmail => throw _privateConstructorUsedError;
+  String get locationName => throw _privateConstructorUsedError;
   String? get openDoorCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +39,11 @@ abstract class $ReservationCopyWith<$Res> {
       _$ReservationCopyWithImpl<$Res, Reservation>;
   @useResult
   $Res call(
-      {List<DateTime> bookedDates, bool isDoorOpen, String? openDoorCode});
+      {List<DateTime> bookedDates,
+      bool isDoorOpen,
+      String clientEmail,
+      String locationName,
+      String? openDoorCode});
 }
 
 /// @nodoc
@@ -55,6 +61,8 @@ class _$ReservationCopyWithImpl<$Res, $Val extends Reservation>
   $Res call({
     Object? bookedDates = null,
     Object? isDoorOpen = null,
+    Object? clientEmail = null,
+    Object? locationName = null,
     Object? openDoorCode = freezed,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +74,14 @@ class _$ReservationCopyWithImpl<$Res, $Val extends Reservation>
           ? _value.isDoorOpen
           : isDoorOpen // ignore: cast_nullable_to_non_nullable
               as bool,
+      clientEmail: null == clientEmail
+          ? _value.clientEmail
+          : clientEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      locationName: null == locationName
+          ? _value.locationName
+          : locationName // ignore: cast_nullable_to_non_nullable
+              as String,
       openDoorCode: freezed == openDoorCode
           ? _value.openDoorCode
           : openDoorCode // ignore: cast_nullable_to_non_nullable
@@ -83,7 +99,11 @@ abstract class _$$_ReservationCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<DateTime> bookedDates, bool isDoorOpen, String? openDoorCode});
+      {List<DateTime> bookedDates,
+      bool isDoorOpen,
+      String clientEmail,
+      String locationName,
+      String? openDoorCode});
 }
 
 /// @nodoc
@@ -99,6 +119,8 @@ class __$$_ReservationCopyWithImpl<$Res>
   $Res call({
     Object? bookedDates = null,
     Object? isDoorOpen = null,
+    Object? clientEmail = null,
+    Object? locationName = null,
     Object? openDoorCode = freezed,
   }) {
     return _then(_$_Reservation(
@@ -110,6 +132,14 @@ class __$$_ReservationCopyWithImpl<$Res>
           ? _value.isDoorOpen
           : isDoorOpen // ignore: cast_nullable_to_non_nullable
               as bool,
+      clientEmail: null == clientEmail
+          ? _value.clientEmail
+          : clientEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      locationName: null == locationName
+          ? _value.locationName
+          : locationName // ignore: cast_nullable_to_non_nullable
+              as String,
       openDoorCode: freezed == openDoorCode
           ? _value.openDoorCode
           : openDoorCode // ignore: cast_nullable_to_non_nullable
@@ -124,6 +154,8 @@ class _$_Reservation implements _Reservation {
   _$_Reservation(
       {final List<DateTime> bookedDates = const [],
       this.isDoorOpen = false,
+      required this.clientEmail,
+      required this.locationName,
       this.openDoorCode})
       : _bookedDates = bookedDates;
 
@@ -143,11 +175,15 @@ class _$_Reservation implements _Reservation {
   @JsonKey()
   final bool isDoorOpen;
   @override
+  final String clientEmail;
+  @override
+  final String locationName;
+  @override
   final String? openDoorCode;
 
   @override
   String toString() {
-    return 'Reservation(bookedDates: $bookedDates, isDoorOpen: $isDoorOpen, openDoorCode: $openDoorCode)';
+    return 'Reservation(bookedDates: $bookedDates, isDoorOpen: $isDoorOpen, clientEmail: $clientEmail, locationName: $locationName, openDoorCode: $openDoorCode)';
   }
 
   @override
@@ -159,6 +195,10 @@ class _$_Reservation implements _Reservation {
                 .equals(other._bookedDates, _bookedDates) &&
             (identical(other.isDoorOpen, isDoorOpen) ||
                 other.isDoorOpen == isDoorOpen) &&
+            (identical(other.clientEmail, clientEmail) ||
+                other.clientEmail == clientEmail) &&
+            (identical(other.locationName, locationName) ||
+                other.locationName == locationName) &&
             (identical(other.openDoorCode, openDoorCode) ||
                 other.openDoorCode == openDoorCode));
   }
@@ -169,6 +209,8 @@ class _$_Reservation implements _Reservation {
       runtimeType,
       const DeepCollectionEquality().hash(_bookedDates),
       isDoorOpen,
+      clientEmail,
+      locationName,
       openDoorCode);
 
   @JsonKey(ignore: true)
@@ -189,6 +231,8 @@ abstract class _Reservation implements Reservation {
   factory _Reservation(
       {final List<DateTime> bookedDates,
       final bool isDoorOpen,
+      required final String clientEmail,
+      required final String locationName,
       final String? openDoorCode}) = _$_Reservation;
 
   factory _Reservation.fromJson(Map<String, dynamic> json) =
@@ -198,6 +242,10 @@ abstract class _Reservation implements Reservation {
   List<DateTime> get bookedDates;
   @override
   bool get isDoorOpen;
+  @override
+  String get clientEmail;
+  @override
+  String get locationName;
   @override
   String? get openDoorCode;
   @override

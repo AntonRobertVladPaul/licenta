@@ -24,9 +24,10 @@ part 'app_router.gr.dart';
           guards: [AuthGuard],
           children: [
             locationFirstLevelRoute,
-            ...profileRoutes,
+            profileFirstLevelRoute,
           ],
         ),
+        ...profileRoutes,
         ...locationsRoutes,
       ],
     ),

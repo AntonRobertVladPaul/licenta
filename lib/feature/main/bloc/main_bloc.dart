@@ -18,6 +18,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
           const MainState(),
         ) {
     on<_AccountFetched>(_onAccountFetched);
+    on<_MoneyWithdrawn>(_onMoneyWithdrawn);
   }
 
   final MainRepository _repository;
@@ -39,6 +40,27 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       (_) => emit(state.copyWith(status: MainStatus.failure)),
       (account) => emit(
         state.copyWith(status: MainStatus.accountFetched, account: account),
+      ),
+    );
+  }
+
+  Future<void> _onMoneyWithdrawn(
+    _MoneyWithdrawn event,
+    Emitter<MainState> emit,
+  ) async {
+    emit(
+      state.copyWith(status: MainStatus.loading),
+    );
+
+    final result = await _repository.withdrawMoney(
+      iban: event.iban,
+      email: state.account?.email ?? '',
+    );
+
+    result.fold(
+      (_) => emit(state.copyWith(status: MainStatus.failure)),
+      (_) => emit(
+        state.copyWith(status: MainStatus.moneyWithdrawn),
       ),
     );
   }
