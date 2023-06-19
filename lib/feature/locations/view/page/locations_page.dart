@@ -100,7 +100,8 @@ class _LocationsBodyState extends State<_LocationsBody> {
                     ],
                   ),
                 ),
-                _buildAddLocationExtendableButton(),
+                if (state.account!.accountType == AccountType.owner)
+                  _buildAddLocationExtendableButton(),
               ],
             );
           },
