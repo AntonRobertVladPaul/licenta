@@ -79,11 +79,13 @@ class LocationsItem extends StatelessWidget {
               color: EasyBookingColors.secondaryText.value,
             ),
           ),
-          Text(
-            '${location.addressLine1} ${location.addressLine2 ?? ''}',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: EasyBookingColors.secondaryText.value,
-                ),
+          Expanded(
+            child: Text(
+              '${location.addressLine1} ${location.addressLine2 ?? ''}',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: EasyBookingColors.secondaryText.value,
+                  ),
+            ),
           ),
         ],
       ),

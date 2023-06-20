@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:licenta/core/core.dart';
@@ -32,15 +33,25 @@ class _BookedLocationsBody extends StatefulWidget {
 }
 
 class _BookedLocationsBodyState extends State<_BookedLocationsBody> {
-  final openDoorCodeController = TextEditingController();
+  late List<TextEditingController> openDoorCodeController;
 
   @override
   void initState() {
     super.initState();
-    context.read<LocationsBloc>().add(const LocationsEvent.locationsFetched());
-    openDoorCodeController.addListener(() {
-      setState(() {});
-    });
+    final bloc = context.read<LocationsBloc>()
+      ..add(const LocationsEvent.locationsFetched());
+    final reservations = bloc.state.locations
+        .expand(
+          (location) => location.getPersonalReservations(
+            context.read<MainBloc>().state.account?.email ?? '',
+          ),
+        )
+        .toList();
+
+    openDoorCodeController = List.generate(
+      reservations.length,
+      (_) => TextEditingController(),
+    );
   }
 
   @override
@@ -87,14 +98,14 @@ class _BookedLocationsBodyState extends State<_BookedLocationsBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildSubtitle(),
-                ...reservations.map(
-                  (reservation) => ReservationItem(
+                ...reservations.mapIndexed(
+                  (index, reservation) => ReservationItem(
                     isButtonLoading:
                         state.status == LocationsStatus.doorLoading,
                     reservation: reservation,
                     onDoorUnlockPressed: () {
                       if (reservation.openDoorCode ==
-                          openDoorCodeController.text) {
+                          openDoorCodeController[index].text) {
                         context.read<LocationsBloc>().add(
                               LocationsEvent.doorStatusChanged(
                                 locationName: reservation.locationName,
@@ -123,7 +134,7 @@ class _BookedLocationsBodyState extends State<_BookedLocationsBody> {
                       }
                     },
                     openDoorCode: reservation.openDoorCode ?? '',
-                    openDoorCodeController: openDoorCodeController,
+                    openDoorCodeController: openDoorCodeController[index],
                   ),
                 ),
               ],
