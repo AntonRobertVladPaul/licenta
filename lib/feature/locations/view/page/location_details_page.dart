@@ -25,18 +25,21 @@ class LocationDetailsPage extends StatelessWidget {
       title: location.name,
       showDefaultLeading: true,
       hasScrollBody: true,
-      trailing: GestureDetector(
-        onTap: () {
-          showCommonBottomSheet(
-            context,
-            DeleteLocationSheet(locationId: location.id ?? ''),
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(right: 16),
-          child: Asset.bin.widget(),
-        ),
-      ),
+      trailing: context.read<MainBloc>().state.account?.accountType ==
+              AccountType.owner
+          ? GestureDetector(
+              onTap: () {
+                showCommonBottomSheet(
+                  context,
+                  DeleteLocationSheet(locationId: location.id ?? ''),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: Asset.bin.widget(),
+              ),
+            )
+          : null,
       body: SafeArea(
         minimum: const EdgeInsets.only(bottom: 16),
         top: false,

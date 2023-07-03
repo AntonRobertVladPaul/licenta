@@ -82,6 +82,12 @@ class _BookedLocationsBodyState extends State<_BookedLocationsBody> {
         }
       },
       builder: (context, state) {
+        if (state.locations.isEmpty) {
+          return const Center(
+            child: Text('No locations found!'),
+          );
+        }
+
         final reservations = state.locations
             .expand(
               (location) => location.getPersonalReservations(
@@ -91,7 +97,8 @@ class _BookedLocationsBodyState extends State<_BookedLocationsBody> {
             .toList();
 
         return LoadableWidget(
-          isLoading: state.status == LocationsStatus.loading,
+          isLoading: state.status == LocationsStatus.loading ||
+              state.status == LocationsStatus.initial,
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 8),
             child: Column(
